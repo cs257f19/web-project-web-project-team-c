@@ -1,0 +1,9 @@
+Story Narrative:
+As a: hobbyist investor
+I want: to view current data from popular stocks or currencies
+So that: make informed assumptions about trends in the market
+Acceptance Criteria:
+1. All data available on the site should be comparable to all other data, if applicable.
+2. Data should be graphed in interesting and appealing ways, with multiple options for graph types.
+3. Graphs should be accessible outside of the site (either through printing, downloading, or saving).
+4. Data should be manipulatable in the browser.

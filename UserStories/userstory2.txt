@@ -1,0 +1,10 @@
+
+Story Narrative:
+As a: student interested in economic trends
+I want: to analyze market data, past and present,
+So that: I can learn about market trends.
+Acceptance Criteria:
+1. Users should be able to view simple trends in market data.
+2. Market data should be graphable against common economic assumptions and curves.
+3. Data should editable to include custom labels in figures.
+4. Our assumptions and strategy for analysis of the data should be accessible to users.

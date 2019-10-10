@@ -1,0 +1,32 @@
+URL: https://finance.yahoo.com/quote/SPY?p=SPY&.tsrc=fin-srch
+Date Downloaded: October 9th 2019
+Authorship: Yahoo Finance
+Dataset Name: SPDR S&P 500 ETF (SPY)
+Time Period: Jan 29th, 1993 - Oct 9th, 2019
+Terms and Usage: “You must not redistribute information displayed on or provided by Yahoo Finance.”*
+
+URL: https://finance.yahoo.com/quote/GLD?p=GLD&.tsrc=fin-srch
+Date Downloaded: October 9th 2019
+Authorship: Yahoo Finance
+Dataset Name: SPDR Gold Shares (GLD)
+Time Period: Nov 18th, 2004 - Oct 9th, 2019
+Terms and Usage: “You must not redistribute information displayed on or provided by Yahoo Finance.”*
+
+URL: https://finance.yahoo.com/quote/BTC-USD/history?p=BTC-USD&.tsrc=fin-srch
+Date Downloaded: October 9th 2019
+Authorship: Yahoo Finance
+Dataset Name: Bitcoin USD (BTC-USD)
+Time Period: Jul 16th, 2010 - Oct 9th, 2019
+Terms and Usage: “You must not redistribute information displayed on or provided by Yahoo Finance.”*
+
+URL: https://finance.yahoo.com/quote/%5EIRX/history?p=^IRX&.tsrc=fin-srch
+Date Downloaded: October 9th 2019
+Authorship: Yahoo Finance
+Dataset Name: 13 Week Treasury Bill (^IRX)
+Time Period: Jan 3rd, 1960 - Oct 9th, 2019
+Terms and Usage: “You must not redistribute information displayed on or provided by Yahoo Finance.”*
+
+Summary of all Datasets:
+All datasets come from Yahoo finance and are formatted in the same way. Each dataset contains the Date, Open Price, High Price, Low Price, Closing Price, Adjusted Closing Price, and Volume of their security. No technical documentation was provided by Yahoo Finance.
+
+*However, because finance data is extremely difficult to find outside of Yahoo Finance, Iris permitted us to data from Yahoo Finance.

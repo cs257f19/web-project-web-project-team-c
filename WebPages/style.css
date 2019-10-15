@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Asap", Asap, sans-serif;
+}
+
+h2{
+  text-align: center;
+  font-size: 35px;
+}
+
+/* Style the header */
+.headerAbout {
+  grid-area: headerAbout;
+  padding: 0px;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'headerAbout headerAbout headerAbout headerAbout'
+    'leftAbout middleAbout middleAbout rightAbout'
+    'headerData headerData headerData headerData'
+    'leftData middleLeftData middleRightData rightData';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.leftAbout,
+.middleAbout,
+.rightAbout {
+  height: 150px;
+}
+
+/* Style the left column */
+.leftAbout {
+  grid-area: leftAbout;
+}
+
+/* Style the middle column */
+.middleAbout {
+  grid-area: middleAbout;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.bodyText{
+  font-size: 15px;
+  font-weight: normal;
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* Style the right column */
+.rightAbout {
+  grid-area: rightAbout;
+}
+
+/* Style the footer */
+.headerData {
+  grid-area: headerData;
+  padding: 0px;
+  text-align: center;
+}
+
+.rightData, .middleRightData, .middleLeftData, .leftData{
+  height: 150px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.rightData{
+  grid-area: rightData;
+}
+
+.middleRightData{
+  grid-area: middleRightData;
+}
+
+.middleLeftData{
+  grid-area: middleLeftData;
+}
+
+.leftData{
+  grid-area: leftData;
+}

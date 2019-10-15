@@ -27,6 +27,7 @@ h2{
 .leftAbout,
 .middleAbout,
 .rightAbout {
+  margin-top: 1rem;
   height: 150px;
 }
 
@@ -107,6 +108,7 @@ h2{
 }
 
 .nav li {
+  width: 20%;
   float: left;
 }
 .nav a {

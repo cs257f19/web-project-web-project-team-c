@@ -130,3 +130,11 @@ a:active {
 .leftData{
   grid-area: leftData;
 }
+
+h3, h4 {
+  margin: 0;
+}
+
+h4 {
+  color: green;
+}

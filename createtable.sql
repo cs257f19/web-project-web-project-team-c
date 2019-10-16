@@ -6,7 +6,7 @@ CREATE TABLE spy (
   lowprice real,
   closeprice real,
   adjcloseprice real,
-  volume int
+  volume bigint
 );
 
 DROP TABLE IF EXISTS irx;
@@ -17,7 +17,7 @@ CREATE TABLE irx (
   lowprice real,
   closeprice real,
   adjcloseprice real,
-  volume int
+  volume bigint
 );
 
 DROP TABLE IF EXISTS gld;
@@ -28,7 +28,7 @@ CREATE TABLE gld (
   lowprice real,
   closeprice real,
   adjcloseprice real,
-  volume int
+  volume bigint
 );
 
 DROP TABLE IF EXISTS btc;
@@ -39,5 +39,5 @@ CREATE TABLE btc (
   lowprice real,
   closeprice real,
   adjcloseprice real,
-  volume int
+  volume bigint
 );

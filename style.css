@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Asap", Asap, sans-serif;
+  margin: 0;
+}
+
+h2{
+  text-align: center;
+  font-size: 35px;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'nav nav nav nav'
+    'leftHomepage middleHomepage middleHomepage rightHomepage'
+    'headerData headerData headerData headerData'
+    'leftData middleLeftData middleRightData rightData'
+    'leftAboutProject middleAboutProject middleAboutProject rightAboutProject'
+    ;
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.nav {
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.nav ul {
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.nav li {
+  width: 20%;
+  float: left;
+}
+.nav a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem 3rem;
+}
+
+.nav a:hover {
+  background-color: lightgray;
+}
+
+a:active {
+  background-color: rgb(29, 29, 29);
+  color: white;
+}
+
+.leftHomepage,
+.middleHomepage,
+.rightHomepage {
+  margin-top: 1rem;
+  height: 150px;
+}
+/* trying to overlay Se over a blue square */
+
+/* Style the left column */
+.leftHomepage {
+  grid-area: leftHomepage;
+  text-align: center;
+}
+
+/* Style the middle column */
+.middleHomepage {
+  grid-area: middleHomepage;
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 10px;
+}
+
+.bodyText{
+  font-size: 15px;
+  font-weight: normal;
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* Style the right column */
+.rightHomepage {
+  grid-area: rightHomepage;
+}
+
+/* Style the footer */
+.headerData {
+  grid-area: headerData;
+  padding: 0px;
+  text-align: center;
+}
+
+.rightData, .middleRightData, .middleLeftData, .leftData{
+
+  height: auto;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.rightData{
+  grid-area: rightData;
+}
+
+.middleRightData{
+  grid-area: middleRightData;
+}
+
+.middleLeftData{
+  grid-area: middleLeftData;
+}
+
+.leftData{
+  grid-area: leftData;
+}
+
+.rightAboutProject, .middleAboutProject, .leftAboutProject{
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.rightAboutProject{
+  grid-area: rightAboutProject;
+}
+
+.middleAboutProject{
+  grid-area: middleAboutProject;
+  text-align: center;
+}
+
+.leftAboutProject{
+  grid-area: leftAboutProject;
+}
+
+h3, h4 {
+  margin: 0;
+}
+
+h4 {
+  color: green;
+}

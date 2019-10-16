@@ -125,14 +125,7 @@ h2{
   background-color: lightgray;
 }
 
-#header {
+a:active {
   background-color: rgb(29, 29, 29);
-}
-
-#header a {
   color: white;
-}
-
-#header a:hover {
-  background-color: gray;
 }

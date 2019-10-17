@@ -163,6 +163,10 @@ a:active {
   grid-area: headerAnalysis;
 }
 
+.leftAnalysis, .middleLeftAnalysis, .middleRightAnalysis, .rightAnalysis{
+  margin-bottom: 10%;
+}
+
 .leftAnalysis{
   grid-area: leftAnalysis;
 }

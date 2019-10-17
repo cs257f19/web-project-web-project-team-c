@@ -24,6 +24,9 @@ h2{
     'leftData middleLeftData middleRightData rightData'
     'headerProject headerProject headerProject headerProject'
     'leftProject middleProject middleProject rightProject'
+    'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
+    'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
+    'footer footer footer footer';
   /* grid-column-gap: 10px; - if you want gap between the columns */
 }
 
@@ -121,7 +124,7 @@ figure {
 }
 
 .rightData, .middleRightData, .middleLeftData, .leftData{
-  height: 150px;
+  height: auto;
   font-weight: bold;
   font-size: 20px;
   text-align: center;
@@ -161,6 +164,32 @@ figure {
 
 .leftProject{
   grid-area: leftProject;
+}
+
+.headerAnalysis{
+  grid-area: headerAnalysis;
+}
+
+.leftAnalysis{
+  grid-area: leftAnalysis;
+}
+
+.middleLeftAnalysis{
+  grid-area: middleLeftAnalysis;
+}
+
+.middleRightAnalysis{
+  grid-area: middleRightAnalysis;
+}
+
+.rightAnalysis{
+  grid-area: rightAnalysis;
+}
+
+.footer{
+  margin-top: 50px;
+  grid-area: footer;
+  font-size: 12px;
 }
 
 

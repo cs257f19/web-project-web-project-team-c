@@ -31,6 +31,7 @@ h2{
 }
 
 .nav {
+  z-index: 10;
   border-bottom: 1px solid black;
   position: -webkit-sticky;
   position: sticky;
@@ -48,9 +49,14 @@ h2{
 }
 
 .nav li {
-  width: 20%;
+  height: 100%;
   float: left;
 }
+
+#faq {
+  float: right;
+}
+
 .nav a {
   display: block;
   text-decoration: none;
@@ -72,7 +78,6 @@ a:active {
 
 .hero {
   background:url("images/stocks.jpg");
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
   height: 400px;
   background-position: center;
   background-repeat: no-repeat;
@@ -83,10 +88,13 @@ a:active {
 }
 
 .herotext {
+  padding: 2rem;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
   color: white;
-  text-align: center;
+  text-align: left;
   position: absolute;
-  left: 50%;
+  top: 40%;
+  left: 35%;
   transform: translate(-50%, -50%);
 }
 

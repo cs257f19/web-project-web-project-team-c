@@ -165,6 +165,8 @@ a:active {
 
 .leftAnalysis, .middleLeftAnalysis, .middleRightAnalysis, .rightAnalysis{
   margin-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .leftAnalysis{

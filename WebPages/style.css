@@ -21,7 +21,9 @@ h2{
     'hero hero hero hero'
     'leftAbout middleAbout middleAbout rightAbout'
     'headerData headerData headerData headerData'
-    'leftData middleLeftData middleRightData rightData';
+    'leftData middleLeftData middleRightData rightData'
+    'headerProject headerProject headerProject headerProject'
+    'leftProject middleProject middleProject rightProject'
   /* grid-column-gap: 10px; - if you want gap between the columns */
 }
 
@@ -143,8 +145,29 @@ figure {
   grid-area: leftData;
 }
 
+.headerProject{
+  grid-area: headerProject;
+  padding: 0px;
+  text-align: center;
+}
+
+.rightProject{
+  grid-area: rightProject;
+}
+
+.middleProject{
+  grid-area: middleProject;
+}
+
+.leftProject{
+  grid-area: leftProject;
+}
+
+
+
 h3, h4 {
   margin: 0;
+  text-align: center;
 }
 
 h4 {

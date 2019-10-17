@@ -25,6 +25,7 @@ h2{
     'leftProject middleProject middleProject rightProject'
     'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
     'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
+    'graph graph graph graph'
     'footer footer footer footer';
   /* grid-column-gap: 10px; - if you want gap between the columns */
 }
@@ -168,6 +169,17 @@ a:active {
 
 .rightAnalysis{
   grid-area: rightAnalysis;
+}
+
+.graph{
+  grid-area: graph;
+  background-image: url("images/graph.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  max-height: 100%;
+  max-width: 100%;
+  background-size: contain;
+  height: 500px;
 }
 
 .footer{

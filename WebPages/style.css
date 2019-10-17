@@ -18,6 +18,7 @@ h2{
   display: grid;
   grid-template-areas:
     'nav nav nav nav'
+    'hero hero hero hero'
     'leftAbout middleAbout middleAbout rightAbout'
     'headerData headerData headerData headerData'
     'leftData middleLeftData middleRightData rightData';
@@ -26,7 +27,6 @@ h2{
 
 .nav {
   border-bottom: 1px solid black;
-  margin-bottom: 1rem;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -63,6 +63,18 @@ h2{
 a:active {
   background-color: rgb(29, 29, 29);
   color: white;
+}
+
+.hero {
+  width: 100%;
+  display: block;
+  margin: -20% 0%;
+}
+
+figure {
+  margin: 0;
+  height: 400px;
+  overflow: hidden;
 }
 
 .leftAbout,

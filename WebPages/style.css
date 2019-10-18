@@ -25,6 +25,7 @@ h2{
     'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
     'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
     'graph graph graph graph'
+    'faq faq faq faq'
     'footer footer footer footer';
   /* grid-column-gap: 10px; - if you want gap between the columns */
 }
@@ -158,6 +159,10 @@ h2{
   height: 500px;
 }
 
+.faq {
+  grid-area: faq;
+}
+
 .footer{
   margin-top: 50px;
   grid-area: footer;
@@ -256,6 +261,7 @@ h3, h4 {
       'middleRightAnalysis'
       'rightAnalysis'
       'graph'
+      'faq'
       'footer';
     /* grid-column-gap: 10px; - if you want gap between the columns */
   }

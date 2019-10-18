@@ -31,7 +31,7 @@ h2{
 
 .hero {
   background:url("images/stocks.jpg");
-  height: 400px;
+  height: 666px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -75,7 +75,7 @@ h2{
 }
 
 .rightData, .middleRightData, .middleLeftData, .leftData{
-  height: auto;
+  height: 600px;
   font-weight: bold;
   font-size: 1rem;
   text-align: center;
@@ -107,17 +107,20 @@ h2{
 }
 
 .rightProject{
+  height: 600px;
   grid-area: rightProject;
 
 }
 
 .middleProject{
+  height: 600px;
   grid-area: middleProject;
   padding-left: 10%;
   padding-right: 10%;
 }
 
 .leftProject{
+  height: 600px;
   grid-area: leftProject;
 }
 
@@ -126,6 +129,7 @@ h2{
 }
 
 .leftAnalysis, .middleLeftAnalysis, .middleRightAnalysis, .rightAnalysis{
+  height: 600px;
   margin-bottom: 10%;
   padding-left: 10%;
   padding-right: 10%;

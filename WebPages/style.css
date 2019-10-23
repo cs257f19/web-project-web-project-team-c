@@ -22,6 +22,7 @@ h2{
     'leftData middleLeftData middleRightData rightData'
     'headerProject headerProject headerProject headerProject'
     'leftProject middleProject middleProject rightProject'
+    'query query query query'
     'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
     'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
     'graph graph graph graph'
@@ -205,6 +206,19 @@ h3, h4 {
   float: left;
 }
 
+.query {
+  grid-area: query;
+  height: 200px;
+}
+
+.query p {
+  text-align: center;
+}
+
+.faq {
+  height: 300px;
+}
+
 #faq {
   float: right;
   border-left: none;
@@ -259,6 +273,7 @@ h3, h4 {
       'middleProject'
       'middleProject'
       'rightProject'
+      'query'
       'headerAnalysis'
       'leftAnalysis'
       'middleLeftAnalysis'
@@ -268,6 +283,18 @@ h3, h4 {
       'faq'
       'footer';
     /* grid-column-gap: 10px; - if you want gap between the columns */
+  }
+  
+  .rightData, .middleRightData, .middleLeftData, .leftData{
+    height: 160px;
+  }
+
+  .rightAnalysis, .middleRightAnalysis, .middleLeftAnalysis, .leftAnalysis {
+    height: 160px;
+  }
+
+  .middleProject {
+    height: 160px;
   }
 
   .navelement {

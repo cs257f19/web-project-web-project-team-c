@@ -33,6 +33,17 @@ class DataSource:
     def closeConnection(self):
         self.connection.close()
 
+    def getData(self, setname):
+        try:
+            cursor = connection.cursor()
+            query = "SELECT	* FROM {0}".format(setname)
+            cursor.execute(query)
+            return cursor.fetchall()
+
+        except Exception as e:
+            print("Something went wrong when executing the query: ", e)
+            return []
+
     def getDataInRange(self, dataset, fromDate, toDate=20191009):
         '''
         Returns a collection containing data within given range for specified dataset
@@ -44,10 +55,18 @@ class DataSource:
         returnData = []
         if dataset != []:
             for dataRow in dataset:
-                if fromDate <= dataRow[0] <= toDate:
-                    returnData.append(dataRow) 
+                priceDate = dateTimeToInt(dataRow[0])
+                if fromDate <= priceDate <= toDate:
+                    returnData.append(dataRow)
 
         return returnData
+
+    def dateTimeToInt(dt_time):
+        '''
+        Converts dt_time to an int.
+        dt_time: Datetime format
+        '''
+        return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
     def getDataOfType(self, dataset, dataType):
         '''
@@ -55,18 +74,8 @@ class DataSource:
         dataset: list of lists containing data from the database
         dataType: string name of data type
         '''
+
         pass
-
-    def getData(self, setname):
-        try:
-            cursor = connection.cursor()
-            query = "SELECT	* FROM {0}".format(setname)
-            cursor.execute(query)
-            return cursor.fetchall()
-
-        except Exception as e:
-            print("Something went wrong when executing the query: ", e)
-            return []
 
     def performDataQuery(self, datasets, dataType, fromDate, toDate):
         '''
@@ -101,6 +110,11 @@ class DataSource:
         pass
 
     def doRegressionAnalysis(self, regressand, regressor, regressionType):
+        '''
+        Returns a list containing a string of whether to buy stock or not and the probability that the stock will increase in price.
+        regressand: the target value (most likely the stock price or a boolean of either positive or negative change - stock price change)
+        regressor: list of variables that are going to be used to impact target value
+        '''
         pass
 
     def doLassoRegression(self, dataset):

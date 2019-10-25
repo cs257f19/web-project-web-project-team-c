@@ -41,7 +41,7 @@ class DataSource:
         '''
         try:
             cursor = connection.cursor()
-            query = "SELECT	* FROM " + dataset + " WHERE (pricedate BETWEEN '" + fromDate + "' AND '" + toDate + "')"
+            query = "SELECT	* FROM {0} WHERE (pricedate BETWEEN '{1}' AND '{2}')".format(dataset, fromDate, toDate)
             cursor.execute(query)
             return cursor.fetchall()
 

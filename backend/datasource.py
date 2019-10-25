@@ -33,35 +33,50 @@ class DataSource:
     def closeConnection(self):
         self.connection.close()
 
-    def getDataInRange(self, dataset, fromDate, toDate= "2019-10-09"):
+    def getDataInRange(self, dataset, fromDate, toDate=20191009):
         '''
         Returns a collection containing data within given range for specified dataset
-        dataset: string type containing name of dataset
-        fromDate and toDate: string in date format
+        dataset: list of lists containing data from the database
+        fromDate and toDate: date in integer format YYYYMMDD
 
         Returns: a collection of all data within range.
         '''
-        
+        returnData = []
+        if dataset != []:
+            for dataRow in dataset:
+                if fromDate <= dataRow[0] <= toDate:
+                    returnData.append(dataRow) 
+
+    def getDataOfType(self, dataset, datatype):
+        '''
+        Returns a collection containing the pricedate and the selected datatype for a given dataset
+        dataset: list of lists containing data from the database
+        datatype: string name of datatype
+        '''
+        pass
+
+    def getData(self, setname):
         try:
             cursor = connection.cursor()
-            query = "SELECT	* FROM {0} WHERE (pricedate BETWEEN '{1}' AND '{2}')".format(dataset, fromDate, toDate)
+            query = "SELECT	* FROM {0}".format(setname)
             cursor.execute(query)
             return cursor.fetchall()
 
         except Exception as e:
             print("Something went wrong when executing the query: ", e)
-            return None
-
-    def getDataOfType(self, dataset, datatype):
-        pass
-
-    def performAnalysisQuery(self, datasets, datatype, analysistype, toDate):
-        pass
+            return []
 
     def performDataQuery(self, datasets, datatype, fromDate, toDate):
         returnData = []
-        for dataset in datasets:
-            tempData = getDataInRange(dataset, fromDate, toDate)
+        for setname in datasets:
+            tempData = getData(setname)
+            tempData = getDataInRange(tempData, fromDate, toDate)
             tempData = getDataOfType(tempData, datatype)
             returnData.append(tempData)
         return returnData
+
+    def getTrendline(self, dataset, trendtype):
+        pass
+
+    def graphData(self, dataset, trendline, color, style):
+        pass

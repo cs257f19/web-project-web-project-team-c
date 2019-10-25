@@ -30,12 +30,12 @@ class DataSource:
 
     def getDataInRange(self, dataset, fromDate, toDate= "2019-10-09"):
         '''
-        Returns a list containing data within given range for specified dataset
+        Returns a collection containing data within given range for specified dataset
+        dataset: string type containing name of dataset
+        fromDate and toDate: string in date format
 
-        Returns: a list of all data within range.
+        Returns: a collection of all data within range.
         '''
-
-
 
         try:
             cursor = connection.cursor()

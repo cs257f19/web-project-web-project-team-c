@@ -49,27 +49,17 @@ class DataSource:
             print("Something went wrong when executing the query: ", e)
             return None
 
-    def getQuakesOnContinent(self, continent):
-        '''
-        Returns a list of all of the earthquakes that occurred on the specified continent.
+    def getDataOfType(self, dataset, datatype):
+        pass
 
-        PARAMETERS:
-            continent 
-        
-        RETURN:
-            a list of all of the earthquake events that occurred on this continent
-        '''
-        return []
+    def performAnalysisQuery(self, datasets, datatype, analysistype, toDate):
+        pass
+    
+    def performDataQuery(self, datasets, datatype, fromDate, toDate):
+        returnData = []
+        for dataset in datasets:
+            tempData = getDataInRange(dataset, fromDate, toDate)
+            tempData = getDataOfType(tempData, datatype)
+            returnData.append(tempData)
+        return returnData
 
-    def getQuakesInDateRange(self, start, end):
-        '''
-        Returns a list of all of the earthquakes that occurred within the range of specified dates.
-
-        PARAMETERS:
-            start - the starting date of the range
-            end - the ending date of the range
-
-        RETURN:
-            a list of all of the earthquake events that occurred within this date range.
-        '''
-        return []

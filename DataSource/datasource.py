@@ -32,19 +32,22 @@ class DataSource:
         
     def closeConnection(self):
         self.connection.close()
-        
-    def getDataInRange(self, start, end=10.0):
-        '''
-        Returns a list of all of the magnitudes from the specified starting magnitude until the specified ending magnitude.
 
-        PARAMETERS:
-            start - the low end of the magnitude range
-            end - the high end of the magnitude range (default: 10.0)
-
-        RETURN:
-            a list of all of the earthquake events with magnitudes in the specified range
+    def getDataInRange(self, dataset, fromDate, toDate= "2019-10-09"):
         '''
-        return []
+        Returns a list containing data within given range for specified dataset
+
+        Returns: a list of all data within range.
+        '''
+        try:
+            cursor = connection.cursor()
+            query = "SELECT	* FROM " + dataset + " WHERE (pricedate BETWEEN '" + fromDate + "' AND '" + toDate + "')"
+            cursor.execute(query)
+            return cursor.fetchall()
+
+        except Exception as e:
+            print("Something went wrong when executing the query: ", e)
+            return None
 
     def getQuakesOnContinent(self, continent):
         '''

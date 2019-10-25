@@ -32,32 +32,35 @@ class DataSource:
 
     def closeConnection(self):
         self.connection.close()
-
-    def getDataInRange(self, dataset, fromDate, toDate=20191009):
+        
+    def performDataQuery(self, datasets, dataType, fromDate, toDate):
         '''
-        Returns a collection containing data within given range for specified dataset
-        dataset: list of lists containing data from the database
+        Executes all the necessary functions to return a list of lists containing data of a certain type in a given range
+        datasets: list of string names of datasets
+        dataType: string name of data type
         fromDate and toDate: date in integer format YYYYMMDD
-
-        Returns: a collection of all data within range.
+        
+        Returns: a list of list of lists of data from the specified tables, 
+        		 unless a query fails in which case it returns an empty list and stops the function call
         '''
         returnData = []
-        if dataset != []:
-            for dataRow in dataset:
-                if fromDate <= dataRow[0] <= toDate:
-                    returnData.append(dataRow) 
-
+        for setname in datasets:
+            tempData = getData(setname)
+            if tempData != []:
+				tempData = getDataInRange(tempData, fromDate, toDate)
+				tempData = getDataOfType(tempData, dataType)
+				returnData.append(tempData)
+			else:
+				return []
         return returnData
 
-    def getDataOfType(self, dataset, dataType):
-        '''
-        Returns a collection containing the pricedate and the selected datatype for a given dataset
-        dataset: list of lists containing data from the database
-        dataType: string name of data type
-        '''
-        pass
-
     def getData(self, setname):
+    	'''
+    	Returns all data from the specified table in the database
+    	setname: string name of the database
+    	
+    	Returns: a list of lists of data from the specified table
+    	'''
         try:
             cursor = connection.cursor()
             query = "SELECT	* FROM {0}".format(setname)
@@ -68,20 +71,41 @@ class DataSource:
             print("Something went wrong when executing the query: ", e)
             return []
 
-    def performDataQuery(self, datasets, dataType, fromDate, toDate):
+    def getDataInRange(self, dataset, fromDate, toDate=20191009):
         '''
-        Executes all the necessary functions to return a list of lists containing data of a certain type in a given range
-        datasets: list of string names of datasets
-        dataType: string name of data type
+        Returns a collection containing data within given range for specified dataset
+        dataset: list of lists containing data from the database
         fromDate and toDate: date in integer format YYYYMMDD
+
+        Returns: a list of lists of data within the specified range
         '''
-        returnData = []
-        for setname in datasets:
-            tempData = getData(setname)
-            tempData = getDataInRange(tempData, fromDate, toDate)
-            tempData = getDataOfType(tempData, dataType)
-            returnData.append(tempData)
+
+		for dataRow in dataset:
+			priceDate = dateTimeToInt(dataRow[0])
+			if fromDate <= priceDate <= toDate:
+				returnData.append(dataRow)
+
         return returnData
+        
+    def getDataOfType(self, dataset, dataType):
+        '''
+        Returns a collection containing the pricedate and the selected datatype for a given dataset
+        dataset: list of lists containing data from the database
+        dataType: string name of data type
+        
+        Returns: a list of lists of data of the specified type
+        '''
+
+        pass
+
+    def dateTimeToInt(dt_time):
+        '''
+        Converts dt_time to an int.
+        dt_time: Datetime format
+        
+        Returns: date in integer format YYYYMMDD
+        '''
+        return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
     def performAnalysisQuery(self, datasets, dataType, analysisType):
         '''
@@ -101,6 +125,12 @@ class DataSource:
         pass
 
     def doRegressionAnalysis(self, regressand, regressor, regressionType):
+        '''
+        Returns a list containing a string of whether to buy stock or not and the probability that the stock will increase in price.
+        regressand: the target value (most likely the stock price or a boolean of either positive or negative change - stock price change)
+        regressor: list of variables that are going to be used to impact target value
+        regressionType: type of regression analysis to perform (linear, lasso, polynomial of degree n)
+        '''
         pass
 
     def graphData(self, dataset, colorblindPalette=None, style, trendline=None):
@@ -109,5 +139,6 @@ class DataSource:
     	dataset: list of lists containing data to be graphed
     	colorblindPalette: string name of colorblindness to correct for
     	style: string name of graph style (bar, line, point)
-    	trendline: string of trendline    	'''
+    	trendline: string of trendline    	
+    	'''
         pass

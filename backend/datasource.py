@@ -47,6 +47,8 @@ class DataSource:
                 if fromDate <= dataRow[0] <= toDate:
                     returnData.append(dataRow) 
 
+        return returnData
+
     def getDataOfType(self, dataset, dataType):
         '''
         Returns a collection containing the pricedate and the selected datatype for a given dataset
@@ -96,6 +98,9 @@ class DataSource:
         dataset: list containing data
         trendType: string name of trend type (linear, exponential, polynomial of degree n, etc.)
         '''
+        pass
+
+    def doRegressionAnalysis(self, regressand, regressor, regressionType):
         pass
 
     def doLassoRegression(self, dataset):

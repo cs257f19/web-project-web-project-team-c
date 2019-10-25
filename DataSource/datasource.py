@@ -11,7 +11,24 @@ class DataSource:
     def __init__(self):
         pass
 
-    def getMagnitudesInRange(self, start, end=10.0):
+    def connect(user, password):
+        '''
+        Establishes a connection to the database with the following credentials:
+            user - username, which is also the name of the database
+            password - the password for this database on perlman
+
+        Returns: a database connection.
+
+        Note: exits if a connection cannot be established.
+        '''
+        try:
+            connection = psycopg2.connect(database=user, user=user, password=password)
+        except Exception as e:
+            print("Connection error: ", e)
+            exit()
+        return connection
+
+    def getDataInRange(self, start, end=10.0):
         '''
         Returns a list of all of the magnitudes from the specified starting magnitude until the specified ending magnitude.
 
@@ -49,3 +66,22 @@ class DataSource:
         '''
         return []
 
+
+    def main():
+        # Replace these credentials with your own
+        user = 'adalal'
+        password = getpass.getpass()
+
+        # Connect to the database
+        connection = connect(user, password)
+
+        # Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
+        results = getQuakesAboveMagnitude(connection, 5)
+
+        if results is not None:
+            print("Query results: ")
+            for item in results:
+                print(item)
+
+        # Disconnect from database
+        connection.close()

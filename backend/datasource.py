@@ -103,11 +103,11 @@ class DataSource:
     def doRegressionAnalysis(self, regressand, regressor, regressionType):
         pass
 
-    def doLassoRegression(self, dataset):
-        pass
-
-    def doBackProp(self, dataset):
-        pass
-
-    def graphData(self, dataset, color, style, trendline=None):
+    def graphData(self, dataset, colorblindPalette=None, style, trendline=None):
+    	'''
+    	Return an image of graph based on the specified parameters.
+    	dataset: list of lists containing data to be graphed
+    	colorblindPalette: string name of colorblindness to correct for
+    	style: string name of graph style (bar, line, point)
+    	trendline: string of trendline    	'''
         pass

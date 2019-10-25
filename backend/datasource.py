@@ -47,11 +47,11 @@ class DataSource:
                 if fromDate <= dataRow[0] <= toDate:
                     returnData.append(dataRow) 
 
-    def getDataOfType(self, dataset, datatype):
+    def getDataOfType(self, dataset, dataType):
         '''
         Returns a collection containing the pricedate and the selected datatype for a given dataset
         dataset: list of lists containing data from the database
-        datatype: string name of datatype
+        dataType: string name of data type
         '''
         pass
 
@@ -66,17 +66,43 @@ class DataSource:
             print("Something went wrong when executing the query: ", e)
             return []
 
-    def performDataQuery(self, datasets, datatype, fromDate, toDate):
+    def performDataQuery(self, datasets, dataType, fromDate, toDate):
+        '''
+        Executes all the necessary functions to return a list of lists containing data of a certain type in a given range
+        datasets: list of string names of datasets
+        dataType: string name of data type
+        fromDate and toDate: date in integer format YYYYMMDD
+        '''
         returnData = []
         for setname in datasets:
             tempData = getData(setname)
             tempData = getDataInRange(tempData, fromDate, toDate)
-            tempData = getDataOfType(tempData, datatype)
+            tempData = getDataOfType(tempData, dataType)
             returnData.append(tempData)
         return returnData
 
-    def getTrendline(self, dataset, trendtype):
+    def performAnalysisQuery(self, datasets, dataType, analysisType):
+        '''
+        Executes all the necessary functions in order to perform analysis on a set (or sets) of data and returns a list of lists containing that data
+        datasets: list of string names of datasets
+        dataType: string name of data type
+        analysisType: string name of analysis type
+        '''
         pass
 
-    def graphData(self, dataset, trendline, color, style):
+    def getTrendline(self, dataset, trendType):
+        '''
+        Returns a string of the best trendline for a given set of data
+        dataset: list containing data
+        trendType: string name of trend type (linear, exponential, polynomial of degree n, etc.)
+        '''
+        pass
+
+    def doLassoRegression(self, dataset):
+        pass
+
+    def doBackProp(self, dataset):
+        pass
+
+    def graphData(self, dataset, color, style, trendline=None):
         pass

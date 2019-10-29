@@ -45,24 +45,24 @@ class DataSource:
         '''
         returnData = []
         for setname in datasets:
-            tempData = getData(setname)
+            tempData = self.getData(setname)
             if tempData != []:
-				tempData = getDataInRange(tempData, fromDate, toDate)
-				tempData = getDataOfType(tempData, dataType)
-				returnData.append(tempData)
-			else:
-				return []
+                tempData = self.getDataInRange(tempData, fromDate, toDate)
+                tempData = self.getDataOfType(tempData, dataType)
+                returnData.append(tempData)
+            else:
+                return []
         return returnData
 
     def getData(self, setname):
-    	'''
+        '''
     	Returns all data from the specified table in the database
     	setname: string name of the database
     	
     	Returns: a list of lists of data from the specified table
     	'''
         try:
-            cursor = connection.cursor()
+            cursor = self.connection.cursor()
             query = "SELECT	* FROM {0}".format(setname)
             cursor.execute(query)
             return cursor.fetchall()
@@ -80,10 +80,11 @@ class DataSource:
         Returns: a list of lists of data within the specified range
         '''
 
-		for dataRow in dataset:
-			priceDate = dateTimeToInt(dataRow[0])
-			if fromDate <= priceDate <= toDate:
-				returnData.append(dataRow)
+        returnData = [] #Why wasn't this here?
+        for dataRow in dataset:
+            priceDate = self.dateTimeToInt(dataRow[0])
+            if fromDate <= priceDate <= toDate:
+                returnData.append(dataRow)
 
         return returnData
         
@@ -98,7 +99,7 @@ class DataSource:
 
         pass
 
-    def dateTimeToInt(dt_time):
+    def dateTimeToInt(self, dt_time):
         '''
         Converts dt_time to an int.
         dt_time: Datetime format
@@ -133,8 +134,8 @@ class DataSource:
         '''
         pass
 
-    def graphData(self, dataset, colorblindPalette=None, style, trendline=None):
-    	'''
+    def graphData(self, dataset, style, colorblindPalette=None, trendline=None):
+        '''
     	Return an image of graph based on the specified parameters.
     	dataset: list of lists containing data to be graphed
     	colorblindPalette: string name of colorblindness to correct for

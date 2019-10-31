@@ -1,5 +1,6 @@
 import psycopg2
 import getpass
+import datetime
 
 class DataSource:
     '''
@@ -27,7 +28,7 @@ class DataSource:
             connection = psycopg2.connect(database=self.user, user=self.user, password=self.password)
         except Exception as e:
             print("Connection error: ", e)
-            exit()
+            return 1
         return connection
 
     def closeConnection(self):
@@ -43,6 +44,9 @@ class DataSource:
         Returns: a list of list of lists of data from the specified tables, 
         		 unless a query fails in which case it returns an empty list and stops the function call
         '''
+        if (type(datasets) != [] or type(datasets[0]) != str or type(dataType) != str or type(fromDate) != int or type(toDate) != int):
+            return []
+
         returnData = []
         for setname in datasets:
             tempData = self.getData(setname)
@@ -106,6 +110,9 @@ class DataSource:
         
         Returns: date in integer format YYYYMMDD
         '''
+        if (type(dt_time) != datetime.datetime):
+            return 0
+
         return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
     def performAnalysisQuery(self, datasets, dataType, analysisType):

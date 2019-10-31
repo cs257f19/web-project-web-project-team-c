@@ -19,7 +19,7 @@ class DataSourceTester(unittest.TestCase):
         self.assertEqual(result, self.ds.getData("btc")[0])
     def test_get_data_in_range(self):
         result = [(datetime.date(2010, 7, 17), 0.04951, 0.04951, 0.04951, 0.04951, 0.04951, 0), (datetime.date(2010, 7, 18), 0.04951, 0.08585, 0.05941, 0.08584, 0.08584, 5)]
-        self.assertEqual(result, self.ds.getDataInRange(datasetRange, 20100717, 20100718))
+        self.assertEqual(result, self.ds.getDataInRange(self.datasetRange, 20100717, 20100718))
     def test_get_data_of_type(self):
         result = [(datetime.date(2010, 7, 17), 0.04951), (datetime.date(2010, 7, 18), 0.04951)]
         self.assertEqual(result, self.ds.getDataOfType(self.datasetType, "openprice"))

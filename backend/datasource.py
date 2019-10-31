@@ -36,7 +36,7 @@ class DataSource:
     def closeConnection(self):
         self.connection.close()
         
-    def performDataQuery(self, datasets, dataType, fromDate, toDate):
+    def performDataQuery(self, datasets, dataType, fromDate, toDate=20191009):
         '''
         Executes all the necessary functions to return a list of lists containing data of a certain type in a given range
         datasets: list of string names of datasets
@@ -48,7 +48,7 @@ class DataSource:
         '''
 
         # Check if all dataset names are allowed, the datatype is allowed, and that the two dates are in the correct format
-        if ([0 for setname in datasets if setname not in self.allowedDatatsets] == [] or (dataType not in self.allowedDataTypes) or type(fromDate) != int or type(toDate) != int):
+        if ([0 for setname in datasets if setname not in self.allowedDatatsets] == [] or (dataType in self.allowedDataTypes) or type(fromDate) != int or type(toDate) != int):
             return []
 
         returnData = []
@@ -79,7 +79,7 @@ class DataSource:
             print("Something went wrong when executing the query: ", e)
             return []
 
-    def getDataInRange(self, dataset, fromDate, toDate=20191009):
+    def getDataInRange(self, dataset, fromDate, toDate):
         '''
         Returns a collection containing data within given range for specified dataset
         dataset: list of lists containing data from the database

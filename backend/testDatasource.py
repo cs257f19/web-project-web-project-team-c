@@ -12,6 +12,9 @@ class DataSourceTester(unittest.TestCase):
     def test_not_datetime_dateToIntConversion(self):
         x = "hello"
         self.assertEqual(0, self.ds.dateTimeToInt(x))
+    def test_get_data(self):
+        x = (datetime.date(2010, 7, 17), 0.04951, 0.04951, 0.04951, 0.04951, 0.04951, 0)
+        self.assertEqual(x, self.ds.getData("btc")[0])
 
 if __name__ == '__main__':
     unittest.main()

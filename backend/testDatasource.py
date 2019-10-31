@@ -6,10 +6,10 @@ import datetime
 class DataSourceTester(unittest.TestCase):
     def setUp(self):
         self.ds = DataSource("hayesrichn","orange227blue")
-    def test_dateToIntCoversion(self):
+    def test_date_to_int(self):
         result = datetime.date(2020, 5, 17)
         self.assertEqual(20200517, self.ds.dateTimeToInt(result))
-    def test_not_datetime_dateToIntConversion(self):
+    def test_not_datetime_date_to_int(self):
         result = "hello"
         self.assertEqual(0, self.ds.dateTimeToInt(result))
     def test_get_data(self):
@@ -19,6 +19,11 @@ class DataSourceTester(unittest.TestCase):
         result = [(datetime.date(2010, 7, 17), 0.04951, 0.04951, 0.04951, 0.04951, 0.04951, 0), (datetime.date(2010, 7, 18), 0.04951, 0.08585, 0.05941, 0.08584, 0.08584, 5)]
         dataset = self.ds.getData("btc")
         self.assertEqual(result, self.ds.getDataInRange(dataset, 20100717, 20100718))
+    def test_get_data_of_type(self):
+        result = [(datetime.date(2010, 7, 17), 0.04951), (datetime.date(2010, 7, 18), 0.04951)]
+        dataset = self.ds.getData("btc")
+        dataset = self.ds.getDataInRange(dataset, 20100717, 20100718)
+        self.assertEqual(result, self.ds.getDataOfType(dataset, "openprice"))
 
 
 if __name__ == '__main__':

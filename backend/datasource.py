@@ -100,8 +100,24 @@ class DataSource:
         
         Returns: a list of lists of data of the specified type
         '''
+        returnData = []
+        if dataType == "openprice":
+            dataIndex = 1
+        elif dataType == "highprice":
+            dataIndex = 2
+        elif dataType == "lowprice":
+            dataIndex = 3
+        elif dataType == "closeprice":
+            dataIndex = 4
+        elif dataType == "adjcloseprice":
+            dataIndex = 5
+        elif dataType == "volume":
+            dataIndex = 6
 
-        pass
+        for dataRow in dataset:
+            newDataRow = (dataRow[0], dataRow[dataIndex])
+            returnData.append(newDataRow)
+        return returnData
 
     def dateTimeToInt(self, dt_time):
         '''

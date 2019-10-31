@@ -48,7 +48,7 @@ class DataSource:
         '''
 
         # Check if all dataset names are allowed, the datatype is allowed, and that the two dates are in the correct format
-        if ([0 for setname in datasets if setname not in self.allowedDatatsets] == [] or (dataType in self.allowedDataTypes) or type(fromDate) != int or type(toDate) != int):
+        if ([0 for setname in datasets if setname not in self.allowedDatatsets] != [] or (dataType not in self.allowedDataTypes) or type(fromDate) != int or type(toDate) != int):
             return []
 
         returnData = []

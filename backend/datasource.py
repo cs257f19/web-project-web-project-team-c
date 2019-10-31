@@ -13,6 +13,8 @@ class DataSource:
         self.user = user
         self.password = password
         self.connection = self.connect()
+        self.allowedDatatsets = ["btc", "spy", "gld", "irx"]
+        self.allowedDataTypes = ["openprice", "highprice", "lowprice", "closeprice", "adjcloseprice", "volume"]
 
     def connect(self):
         '''
@@ -44,7 +46,9 @@ class DataSource:
         Returns: a list of list of lists of data from the specified tables, 
         		 unless a query fails in which case it returns an empty list and stops the function call
         '''
-        if (type(datasets) != [] or type(datasets[0]) != str or type(dataType) != str or type(fromDate) != int or type(toDate) != int):
+
+        # Check if all dataset names are allowed, the datatype is allowed, and that the two dates are in the correct format
+        if ([0 for setname in datasets if setname not in self.allowedDatatsets] == [] or (dataType not in self.allowedDataTypes) or type(fromDate) != int or type(toDate) != int):
             return []
 
         returnData = []
@@ -101,18 +105,7 @@ class DataSource:
         Returns: a list of lists of data of the specified type
         '''
         returnData = []
-        if dataType == "openprice":
-            dataIndex = 1
-        elif dataType == "highprice":
-            dataIndex = 2
-        elif dataType == "lowprice":
-            dataIndex = 3
-        elif dataType == "closeprice":
-            dataIndex = 4
-        elif dataType == "adjcloseprice":
-            dataIndex = 5
-        elif dataType == "volume":
-            dataIndex = 6
+        dataIndex = self.allowedDataTypes.index(dataType) + 1
 
         for dataRow in dataset:
             newDataRow = (dataRow[0], dataRow[dataIndex])

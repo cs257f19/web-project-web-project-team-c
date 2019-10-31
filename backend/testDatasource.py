@@ -7,7 +7,7 @@ class DataSourceTester(unittest.TestCase):
     def setUp(self):
         self.ds = DataSource("hayesrichn","orange227blue")
     def test_dateToIntCoversion(self):
-        result = datetime.datetime(2020, 5, 17)
+        result = datetime.date(2020, 5, 17)
         self.assertEqual(20200517, self.ds.dateTimeToInt(result))
     def test_not_datetime_dateToIntConversion(self):
         result = "hello"

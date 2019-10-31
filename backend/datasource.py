@@ -110,7 +110,7 @@ class DataSource:
         
         Returns: date in integer format YYYYMMDD
         '''
-        if (type(dt_time) != datetime.datetime):
+        if (type(dt_time) != datetime.date):
             return 0
 
         return 10000*dt_time.year + 100*dt_time.month + dt_time.day

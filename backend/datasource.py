@@ -127,25 +127,18 @@ class DataSource:
 
         return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
-    def performAnalysisQuery(self, datasets, regressand, regressor, regressionType, fromDate, toDate=20191009):
+    def performAnalysisQuery(self, [regressandDatasets], [regressorDatasets], regressand, regressor, regressionType, fromDate, toDate=20191009):
         '''
         Executes all the necessary functions in order to perform analysis on a set (or sets) of data and returns a list of lists containing that data
-        datasets: list of string names of datasets
+        regressandDatasets: string name of the regressandDataset
+        regressorDatasets: string name of the regressorDataset
         regressand: string name of regressand
         regressor: string name of regressor
         regressionType: string name of regression type
         '''
-        regressandData = self.performDataQuery(datasets, regressand, fromDate, toDate=20191009)
-        regressorData = self.performDataQuery(datasets, regressor, fromDate, toDate=20191009)
+        regressandData = self.performDataQuery(regressandDatasets, regressand, fromDate, toDate=20191009)
+        regressorData = self.performDataQuery(regressorDatasets, regressor, fromDate, toDate=20191009)
         return doRegressionAnalysis(regressandData, regressorData, regressionType)
-
-    def getTrendline(self, dataset, trendType):
-        '''
-        Returns a string of the best trendline for a given set of data
-        dataset: list containing data
-        trendType: string name of trend type (linear, exponential, polynomial of degree n, etc.)
-        '''
-        pass
 
     def doRegressionAnalysis(self, regressand, regressor, regressionType):
         '''
@@ -156,9 +149,9 @@ class DataSource:
         '''
         if regressionType == "linear":
         	return self.linearRegression(regressand, regressor)
+        return -1
         
-        pass
-    
+            
     def linearRegression(self, regressand, regressor):
     	'''
     	regressand: the target value (most likely the stock price or a boolean of either positive or negative change - stock price change)
@@ -172,18 +165,6 @@ class DataSource:
     	regr.fit(X_train, y_train)
     	y_pred = regr.predict(X_test)
     	if regr.coef_ > 0:
-    		return True
+    		return [True, y_pred, X_test]
     	else:
-    		return False
-    	
-    	
-
-    def graphData(self, dataset, style, colorblindPalette=None, trendline=None):
-        '''
-    	Return an image of graph based on the specified parameters.
-    	dataset: list of lists containing data to be graphed
-    	colorblindPalette: string name of colorblindness to correct for
-    	style: string name of graph style (bar, line, point)
-    	trendline: string of trendline    	
-    	'''
-        pass
+    		return [False, , y_pred, X_test]

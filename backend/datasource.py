@@ -137,10 +137,7 @@ class DataSource:
         '''
         regressandData = self.performDataQuery(datasets, regressand, fromDate, toDate=20191009)
         regressorData = self.performDataQuery(datasets, regressor, fromDate, toDate=20191009)
-        doRegressionAnalysis(regressandData, regressorData, regressionType)
-
-        
-        pass
+        return doRegressionAnalysis(regressandData, regressorData, regressionType)
 
     def getTrendline(self, dataset, trendType):
         '''

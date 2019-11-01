@@ -167,4 +167,4 @@ class DataSource:
     	if regr.coef_ > 0:
     		return [True, y_pred, X_test]
     	else:
-    		return [False, , y_pred, X_test]
+    		return [False, y_pred, X_test]

@@ -127,7 +127,7 @@ class DataSource:
 
         return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
-    def performAnalysisQuery(self, datasets, regressand, regressor, regressionType):
+    def performAnalysisQuery(self, datasets, regressand, regressor, regressionType, fromDate, toDate=20191009):
         '''
         Executes all the necessary functions in order to perform analysis on a set (or sets) of data and returns a list of lists containing that data
         datasets: list of string names of datasets
@@ -135,7 +135,10 @@ class DataSource:
         regressor: string name of regressor
         regressionType: string name of regression type
         '''
-        self.performDataQuery()
+        regressandData = self.performDataQuery(datasets, regressand, fromDate, toDate=20191009)
+        regressorData = self.performDataQuery(datasets, regressor, fromDate, toDate=20191009)
+        doRegressionAnalysis(regressandData, regressorData, regressionType)
+
         
         pass
 

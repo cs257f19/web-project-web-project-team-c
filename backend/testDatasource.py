@@ -44,6 +44,9 @@ class DataSourceTester(unittest.TestCase):
     def test_wrong_datatype_perform_data_query(self):
         result = []
         self.assertEqual(result, self.ds.performDataQuery(["btc", "btc"], "openprice", "2010-07-17", 20100718))
+
+    def test_linear_regression(self):
+        pass
     
 
 

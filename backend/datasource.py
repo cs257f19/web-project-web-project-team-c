@@ -1,6 +1,9 @@
 import psycopg2
 import getpass
 import datetime
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 class DataSource:
     '''
@@ -124,6 +127,18 @@ class DataSource:
 
         return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
+    def performAnalysisQuery(self, datasets, regressand, regressor, regressionType):
+        '''
+        Executes all the necessary functions in order to perform analysis on a set (or sets) of data and returns a list of lists containing that data
+        datasets: list of string names of datasets
+        regressand: string name of regressand
+        regressor: string name of regressor
+        regressionType: string name of regression type
+        '''
+        self.performDataQuery()
+        
+        pass
+
     def getTrendline(self, dataset, trendType):
         '''
         Returns a string of the best trendline for a given set of data
@@ -139,7 +154,29 @@ class DataSource:
         regressor: list of variables that are going to be used to impact target value
         regressionType: type of regression analysis to perform (linear, lasso, polynomial of degree n)
         '''
+        if regressionType == "linear":
+        	return self.linearRegression(regressand, regressor)
+        
         pass
+    
+    def linearRegression(self, regressand, regressor):
+    	'''
+    	regressand: the target value (most likely the stock price or a boolean of either positive or negative change - stock price change)
+    	regressor: list of variables that are going to be used to impact target value
+    	'''
+    	
+    	x_value_data = regressor
+    	y_value_data = regressand
+    	X_train, X_test, y_train, y_test = train_test_split(x_value_data, y_value_data, test_size=0.33, random_state=42)
+    	regr = linear_model.LinearRegression()
+    	regr.fit(X_train, y_train)
+    	y_pred = regr.predict(X_test)
+    	if regr.coef_ > 0:
+    		return True
+    	else:
+    		return False
+    	
+    	
 
     def graphData(self, dataset, style, colorblindPalette=None, trendline=None):
         '''

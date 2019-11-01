@@ -33,6 +33,18 @@ class DataSourceTester(unittest.TestCase):
         result = [[(datetime.date(2010, 7, 17), 0.04951), (datetime.date(2010, 7, 18), 0.04951)], [(datetime.date(2010, 7, 17), 0.04951), (datetime.date(2010, 7, 18), 0.04951)]]
         self.assertEqual(result, self.ds.performDataQuery(["btc", "btc"], "openprice", 20100717, 20100718))
 
+    def test_wrong_dataset_perform_data_query(self):
+        result = []
+        self.assertEqual(result, self.ds.performDataQuery(["btc", "lemon"], "openprice", 20100717, 20100718))
+
+    def test_wrong_datatype_perform_data_query(self):
+        result = []
+        self.assertEqual(result, self.ds.performDataQuery(["btc", "btc"], "lemonprice", 20100717, 20100718))
+
+    def test_wrong_datatype_perform_data_query(self):
+        result = []
+        self.assertEqual(result, self.ds.performDataQuery(["btc", "btc"], "openprice", "2010-07-17", 20100718))
+
 
 if __name__ == '__main__':
     unittest.main()

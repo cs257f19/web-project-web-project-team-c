@@ -124,15 +124,6 @@ class DataSource:
 
         return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
-    def performAnalysisQuery(self, datasets, dataType, analysisType):
-        '''
-        Executes all the necessary functions in order to perform analysis on a set (or sets) of data and returns a list of lists containing that data
-        datasets: list of string names of datasets
-        dataType: string name of data type
-        analysisType: string name of analysis type
-        '''
-        pass
-
     def getTrendline(self, dataset, trendType):
         '''
         Returns a string of the best trendline for a given set of data

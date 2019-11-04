@@ -66,6 +66,10 @@ def get_author(author):
         author_dictionary = {'last_name':'McBozo', 'first_name':'Bozo'}
     return json.dumps(author_dictionary)
 
+@app.route('/ourpage')
+def display_sick_webpage():
+    return render_template('index.html')
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print('Usage: {0} host port'.format(sys.argv[0]), file=sys.stderr)

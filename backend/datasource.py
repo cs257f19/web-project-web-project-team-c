@@ -56,64 +56,27 @@ class DataSource:
 
         returnData = []
         for setname in datasets:
-            tempData = self.getData(setname)
-            if tempData != []:
-                tempData = self.getDataInRange(tempData, fromDate, toDate)
-                tempData = self.getDataOfType(tempData, dataType)
-                returnData.append(tempData)
-            else:
-                return []
+            returnData.append(self.getData(setname))
         return returnData
 
-    def getData(self, setname):
+    def getData(self, setname, dataType, fromDate, toDate=20191009):
         '''
-    	Returns all data from the specified table in the database
+    	Returns all data from the specified table in the database of the specified type, and between the specified dates
     	setname: string name of the database
+        dataType: string name of data type
+        fromDate: integer of start date in format YYYYMMDD
+        toDate: integer of end date in format YYYYMMDD
     	
     	Returns: a list of lists of data from the specified table
     	'''
-        try:
+        try: 
             cursor = self.connection.cursor()
-            query = "SELECT	* FROM {0}".format(setname)
+            query = "SELECT pricedate, {0} FROM {1} WHERE pricedate BETWEEN to_date({2}::text, 'YYYYMMDD') AND to_date({3}::text, 'YYYYMMDD')".format(dataType, setname, fromDate, toDate)
             cursor.execute(query)
             return cursor.fetchall()
-
         except Exception as e:
-            print("Something went wrong when executing the query: ", e)
+            print("Error while executing query: ", e)
             return []
-
-    def getDataInRange(self, dataset, fromDate, toDate):
-        '''
-        Returns a collection containing data within given range for specified dataset
-        dataset: list of lists containing data from the database
-        fromDate and toDate: date in integer format YYYYMMDD
-
-        Returns: a list of lists of data within the specified range
-        '''
-
-        returnData = [] #Why wasn't this here?
-        for dataRow in dataset:
-            priceDate = self.dateTimeToInt(dataRow[0])
-            if fromDate <= priceDate <= toDate:
-                returnData.append(dataRow)
-
-        return returnData
-        
-    def getDataOfType(self, dataset, dataType):
-        '''
-        Returns a collection containing the pricedate and the selected datatype for a given dataset
-        dataset: list of lists containing data from the database
-        dataType: string name of data type
-        
-        Returns: a list of lists of data of the specified type
-        '''
-        returnData = []
-        dataIndex = self.allowedDataTypes.index(dataType) + 1
-
-        for dataRow in dataset:
-            newDataRow = (dataRow[0], dataRow[dataIndex])
-            returnData.append(newDataRow)
-        return returnData
 
     def dateTimeToInt(self, dt_time):
         '''

@@ -33,7 +33,7 @@ class DataSource:
             connection = psycopg2.connect(database=self.user, user=self.user, password=self.password)
         except Exception as e:
             print("Connection error: ", e)
-            return 1
+            exit(1)
         return connection
 
     def closeConnection(self):

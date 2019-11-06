@@ -1,0 +1,14 @@
+Changes to Backend Methods for Code Revisions:
+    1. Removed getDataOfType() and getDataInRange() and replaced them with a single query function getData().
+        - Why? To improve performance of our methods. Processing lists is less efficient than pulling all data at once. 
+        - Even though it allows for less flexibility later, the scope of this project means we are unlikely to need the getDataInRange() and getDataOfType() methods.
+        - Additionally, since we weren't exactly sure how to test all of our methods, we didn't catch some of the bugs that were introduced by using multiple different methods to access our data.
+    2. Rewrote getData() to execute all necessary parts of the query.
+        - Why? Same reason as #1. 
+    3. connect() now exits with error code 1 instead of returning 1 when it fails.
+        - Why? If the backend is unable to connect to the database, it should exit instead of attempting to perform the user's query on a connection that doesn't exist.
+    4. dateTimeToInt() now checks to ensure the date it is receiving is of the correct type.
+        - Why? Allows the method to "fail gracefully" if it somehow gets passed something incorrect or malicious.
+    5. performDataQuery() was refactored to accomodate the single method query execution, and now also includes a type check.
+        - Why? Necessary to accomodate new method.
+        - Type check allows the method to fail gracefully if it somehwo gets passed something incorrect or malicious.

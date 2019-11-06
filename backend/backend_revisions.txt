@@ -11,4 +11,7 @@ Changes to Backend Methods for Code Revisions:
         - Why? Allows the method to "fail gracefully" if it somehow gets passed something incorrect or malicious.
     5. performDataQuery() was refactored to accomodate the single method query execution, and now also includes a type check.
         - Why? Necessary to accomodate new method.
-        - Type check allows the method to fail gracefully if it somehwo gets passed something incorrect or malicious.
+        - Type check allows the method to fail gracefully if it somehow gets passed something incorrect or malicious.
+    6. performAnalysisQuery(), doRegressionAnalysis(), and linearRegression() is now commented out because it uses methods from libraries that have not been installed yet
+	- Why? Libraries have not been installed into perlman but we hope to still be able to use them thus commenting out the code rather than deleting them
+	- We already talked to Amy about getting numpy on the machines and numpy now works. We still need sklearn on perlman.

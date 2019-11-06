@@ -18,7 +18,7 @@ class DataSourceTester(unittest.TestCase):
 
     def test_get_data(self):
         result = (datetime.date(2010, 7, 17), 0.04951, 0.04951, 0.04951, 0.04951, 0.04951, 0)
-        self.assertEqual(result, self.ds.getData("btc")[0])
+        self.assertEqual(result, self.ds.getData("btc", "openprice", 20100717, 20100718)[0])
 
     def test_perform_data_query(self):
         result = [[(datetime.date(2010, 7, 17), 0.04951), (datetime.date(2010, 7, 18), 0.04951)], [(datetime.date(2010, 7, 17), 0.04951), (datetime.date(2010, 7, 18), 0.04951)]]

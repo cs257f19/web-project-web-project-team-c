@@ -56,7 +56,7 @@ class DataSource:
 
         returnData = []
         for setname in datasets:
-            returnData.append(self.getData(setname))
+            returnData.append(self.getData(setname, dataType, fromDate, toDate))
         return returnData
 
     def getData(self, setname, dataType, fromDate, toDate=20191009):

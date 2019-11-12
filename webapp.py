@@ -4,8 +4,7 @@ import flask
 from flask import render_template
 import json
 import sys
-sys.path.insert(1, 'backend')
-from datasource import datasource
+from datasource import DataSource
 
 app = flask.Flask(__name__)
 

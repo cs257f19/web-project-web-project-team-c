@@ -12,7 +12,9 @@ app = flask.Flask(__name__)
 
 @app.route('/ourpage')
 def index():
-    data = DataSource.query.all()
+	if request.method == 'POST':
+		queryForm = request.form.get('queryform')
+	print(queryForm)
     return render_template('index.html')
 
 if __name__ == '__main__':

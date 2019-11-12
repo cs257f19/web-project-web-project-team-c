@@ -4,6 +4,7 @@ import flask
 from flask import render_template
 import json
 import sys
+sys.path.insert(1, 'backend')
 from datasource.py import DataSource
 
 app = flask.Flask(__name__)
@@ -12,9 +13,9 @@ app = flask.Flask(__name__)
 
 @app.route('/ourpage')
 def index():
-	if request.method == 'POST':
-		queryForm = request.form.get('queryform')
-	print(queryForm)
+    if request.method == 'POST':
+        queryForm = request.form.get('queryform')
+    print(queryForm)
     return render_template('index.html')
 
 if __name__ == '__main__':

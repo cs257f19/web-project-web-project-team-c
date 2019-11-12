@@ -8,12 +8,13 @@ from datasource import DataSource
 
 app = flask.Flask(__name__)
 
-@app.route('/')
-def index():
-    # if request.method == 'POST':
-    #     queryForm = request.form.get('queryform')
-    # print(queryForm)
-    return render_template('index.html')
+@app.route("/", methods=['GET','POST'])
+def result():
+    if request.method == 'POST':
+        data = request.form.get('queryform')
+        return render_template('index.html')
+    else:
+        return render_template('index.html')
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:

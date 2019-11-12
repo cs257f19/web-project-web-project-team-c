@@ -85,10 +85,11 @@ class DataSource:
         
         Returns: date in integer format YYYYMMDD
         '''
-        if (type(dt_time) != datetime.date):
+        if (type(dt_time) != str):
             return 0
+        dt_time_list = dt_time.split("-")
 
-        return 10000*dt_time.year + 100*dt_time.month + dt_time.day
+        return 10000*int(dt_time_list[0]) + 100*int(dt_time_list[1]) + int(dt_time_list[2])
 
 #     def performAnalysisQuery(self, regressandDatasets, regressorDatasets, regressand, regressor, regressionType, fromDate, toDate=20191009):
 #         '''

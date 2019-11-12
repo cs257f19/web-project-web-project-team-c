@@ -4,7 +4,7 @@ import flask
 from flask import render_template, request
 import json
 import sys
-#from datasource import DataSource
+from datasource import DataSource
 
 app = flask.Flask(__name__)
 
@@ -19,6 +19,8 @@ def result():
         date2 = request.form.get('date2')
         dataset1 = request.form.get('dataset1')
         dataset2 = request.form.get('dataset2')
+        ds = DataSource('hayesrichn', 'orange227blue')
+        ds.performDataQuery([dataset1, dataset2], 'openprice', date1, date2)
         return render_template('index.html')
     else:
         return render_template('index.html')

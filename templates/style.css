@@ -25,9 +25,14 @@ h2{
     'query query query query'
     'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
     'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
+    'data data data data'
     'faq faq faq faq'
     'footer footer footer footer';
   /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.data {
+  grid-area: data;
 }
 
 .hero {

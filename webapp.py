@@ -21,6 +21,9 @@ def result():
         dataset1 = request.form.get('dataset1')
         dataset2 = request.form.get('dataset2')
         returndata = ds.performDataQuery([dataset1, dataset2], 'openprice', date1, date2)
+        if returndata == []:
+            return render_template('index.html')
+            
         returnhtml = "<h2>DATA</h2>  + \
                      <p>" + returndata[0][0] + "</p>"
 

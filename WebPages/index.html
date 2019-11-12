@@ -15,10 +15,7 @@
         <a id="dropbtn" class="navelement">≡</a>
         <div class="dropdown-content">
           <a href="#data" class="navelement">ABOUT the DATA</a>
-          <a href="#project" class="navelement">ABOUT the PROJECT</a>
           <a href="#query" class="navelement">QUERY our DATA</a>
-          <a href="#analysis" class="navelement">ANALYSIS of DATA</a>
-          <a href="#graph" class="navelement">GRAPHS</a>
           <a href="#faq" class="navelement" id="faq">FAQ</a>
         </div>
       </div>
@@ -63,93 +60,30 @@
             A Treasury Bill, or T-Bill, is short-term debt issued and backed by the full faith and credit of the United States government. The 13 week Treasury bill is debt obligation with a maturity of 13 weeks.
           </div>
         </div>
-        <div class="headerProject">
-          <a class="anchor" name="project"></a>
-          <h2> About the Project </h2>
-        </div>
-        <div class="middleProject">
-          <h3> Methodology (Regression Terms)</h3>
-          <br>Covariance: Finding the relationship between two currencies. Our definitions and equations will go here.
-          <br> Covariance: Definition and equations will go here.
-          <br> Lasso Regression: Definitions and equations will go here
-          <br> Results: Invest or don't invest. Simple resutls for whether to invest or not will go here.
-        </div>
-
-        <div class="headerAnalysis">
-          <a class="anchor" name="analysis"></a>
-          <h2> Analysis of Data </h2>
-        </div>
 
         <div class="query">
           <a class="anchor" name="query"></a>
           <h2>Query Our Data</h2>
-          <p>Compare <select>
+          <form action="index.html#query" id="queryform" method="post">
+
+          </form>
+          <p>Compare <select form="queryform" name="dataset1">
             <option value="IRX">IRX</option>
             <option value="SPY">S&P 500</option>
             <option value="BTC">BTC</option>
             <option value="GLD">GLD</option>
-          </select> to <select>
+          </select> to <select form="queryform" name="dataset2">
             <option value="IRX">IRX</option>
             <option value="SPY">S&P 500</option>
             <option value="BTC">BTC</option>
             <option value="GLD">GLD</option>
-          </select><button>Go</button></p>
+          </select> between <input type="date" form="queryform" name="date1"> and <input type="date" form="queryform"><input type="submit" value="Go" form="queryform" name="date2"></p>
           <p>Perform regression analysis on <select>
             <option value="IRX">IRX</option>
             <option value="SPY">S&P 500</option>
             <option value="BTC">BTC</option>
             <option value="GLD">GLD</option>
-          </select> using <select>
-            <option value="lasso">Lasso Regression</option>
-            <option value="backprop">Backpropogation Regression</option>
-            <option value="covar">Covariance</option>
-            <option value="corr">Correlation Coefficient</option>
           </select><button>Go</button></p>
-        </div>
-
-        <div class="leftAnalysis">
-          <h3>Covariance</h3>
-          <div class="bodyText">
-            <br>GLD: Our Results will go here for each stock
-            <br>IRX:
-            <br>BTC-USD:
-            <br>SPY:
-          </div>
-        </div>
-
-        <div class="middleLeftAnalysis">
-          <h3>Lasso Regression</h3>
-          <div class="bodyText">
-            <br>GLD: Our Results will go here for each stock
-            <br>IRX:
-            <br>BTC-USD:
-            <br>SPY:
-          </div>
-        </div>
-
-        <div class="middleRightAnalysis">
-          <h3>Correlation Coefficient</h3>
-          <div class="bodyText">
-            <br>GLD: Our Results will go here for each stock
-            <br>IRX:
-            <br>BTC-USD:
-            <br>SPY:
-          </div>
-        </div>
-
-        <div class="rightAnalysis">
-          <h3>Results</h3>
-          <div class="bodyText">
-            <br>GLD: Our Results will go here for each stock
-            <br>IRX:
-            <br>BTC-USD:
-            <br>SPY:
-          </div>
-        </div>
-
-        <div class="graph">
-          <h2>Graphs</h2>
-          <a class="anchor" name="graph"></a>
         </div>
 
         <div class="faq">

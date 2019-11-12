@@ -5,7 +5,7 @@ from flask import render_template
 import json
 import sys
 sys.path.insert(1, 'backend')
-from datasource.py import DataSource
+from datasource import datasource
 
 app = flask.Flask(__name__)
 

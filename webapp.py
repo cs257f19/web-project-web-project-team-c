@@ -8,8 +8,11 @@ import sys
 
 app = flask.Flask(__name__)
 
-#@app.route("/", methods=['GET','POST'])
-@app.route('/')
+@app.route("/")
+def index():
+    return render_template('index.html')
+
+@app.route("/", methods=['GET','POST'])
 def result():
    # if request.method == 'POST':
     #    date1 = request.form('date1')
@@ -19,7 +22,7 @@ def result():
        # return render_template('index.html')
    # else:
     #    return render_template('index.html')
-    return render_template('index.html')
+    return render_template('index.html#query')
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print('Usage: {0} host port'.format(sys.argv[0]), file=sys.stderr)

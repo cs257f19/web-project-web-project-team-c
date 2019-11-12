@@ -64,7 +64,7 @@
         <div class="query">
           <a class="anchor" name="query"></a>
           <h2>Query Our Data</h2>
-          <form action="#query" id="queryform" method="post">
+          <form action="{{ url_for('result')}}" id="queryform" method="post">
 
           </form>
           <p>Compare <select form="queryform" name="dataset1">

@@ -11,7 +11,10 @@ app = flask.Flask(__name__)
 @app.route("/", methods=['GET','POST'])
 def result():
     if request.method == 'POST':
-        data = request.form.get('queryform')
+        date1 = request.form('date1')
+        date2 = request.form('date2')
+        dataset1 = request.form('dataset1')
+        dataset2 = request.form('dataset2')
         return render_template('index.html')
     else:
         return render_template('index.html')

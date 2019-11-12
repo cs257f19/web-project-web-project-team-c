@@ -15,13 +15,16 @@ def index():
 @app.route("/", methods=['GET','POST'])
 def result():
     if request.method == 'POST':
-        date1 = request.form.get('date1')
-        date2 = request.form.get('date2')
+        ds = DataSource('hayesrichn', 'orange227blue')
+        date1 = ds.dateTimeToInt(request.form.get('date1'))
+        date2 = ds.dateTimeToInt(request.form.get('date2'))
         dataset1 = request.form.get('dataset1')
         dataset2 = request.form.get('dataset2')
-        ds = DataSource('hayesrichn', 'orange227blue')
-        ds.performDataQuery([dataset1, dataset2], 'openprice', date1, date2)
-        return render_template('index.html')
+        returndata = ds.performDataQuery([dataset1, dataset2], 'openprice', date1, date2)
+        returnhtml = "<h2>DATA</h2>  + \
+                     <p>" + returndata[0][0] + "</p>"
+
+        return render_template('index.html', returnhtml=returnhtml)
     else:
         return render_template('index.html')
     return render_template('index.html')

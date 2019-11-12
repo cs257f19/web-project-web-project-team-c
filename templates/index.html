@@ -65,7 +65,6 @@
           <a class="anchor" name="query"></a>
           <h2>Query Our Data</h2>
           <form action="{{ url_for('result')}}" id="queryform" method="post">
-
           </form>
           <p>Compare <select form="queryform" name="dataset1">
             <option value="IRX">IRX</option>
@@ -84,6 +83,12 @@
             <option value="BTC">BTC</option>
             <option value="GLD">GLD</option>
           </select><button>Go</button></p>
+        </div>
+
+        <div class="data">
+          {% block content %}
+          {% returnhtml %}
+          {% endblock %}
         </div>
 
         <div class="faq">

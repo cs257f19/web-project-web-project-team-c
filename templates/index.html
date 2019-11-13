@@ -64,7 +64,7 @@
         <div class="query">
           <a class="anchor" name="query"></a>
           <h2>Query Our Data</h2>
-          <form action="{{ url_for('result')}}" id="queryform" method="post">
+          <form action="/results.html" id="queryform" method="post">
           </form>
           <p>Compare <select form="queryform" name="dataset1">
             <option value="irx">IRX</option>
@@ -91,18 +91,6 @@
             <option value="BTC">BTC</option>
             <option value="GLD">GLD</option>
           </select><button>Go</button></p>
-        </div>
-
-        <div class="data">
-          {{returnhtml}}
-          {% block content %}
-          <table class="center">
-              <tr><th>Price Date</th><th>{{datatype}} of {{dataset1}}</th><th>{{datatype}} of {{dataset2}}</th></tr>
-                 {% for data in returndata %}
-                    <tr><td>{{data[0]}}</td><td>{{data[1]}}</td><td>{{data[2]}}</td></tr>
-                 {% endfor %}
-          </table>
-          {% endblock %}
         </div>
 
         <div class="faq">

@@ -12,7 +12,7 @@ app = flask.Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route("/", methods=['GET','POST'])
+@app.route("/results.html", methods=['GET','POST'])
 def result():
     if request.method == 'POST':
         ds = DataSource('hayesrichn', 'orange227blue')
@@ -31,11 +31,11 @@ def result():
         returnhtml = flask.Markup(returnhtml)
         print(returndata)
         print([dataset1, dataset2, datatype])
-        return render_template('index.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
+        return render_template('results.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)
-        return render_template('index.html', returnhtml=returnhtml)
+        return render_template('results.html', returnhtml=returnhtml)
         
 if __name__ == '__main__':
     if len(sys.argv) != 3:

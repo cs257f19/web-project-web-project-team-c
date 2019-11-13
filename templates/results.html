@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a simple economics website">
+    <title>Simple Economics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+  </head>
+  <body>
+    <div class="nav">
+      <a href="#" class="navelement" id="sec">Simple Economics</a>
+
+      <div class="dropdown">
+        <a id="dropbtn" class="navelement">≡</a>
+        <div class="dropdown-content">
+          <a href="#data" class="navelement">ABOUT the DATA</a>
+          <a href="#query" class="navelement">QUERY our DATA</a>
+          <a href="#faq" class="navelement" id="faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="data">
+        {{returnhtml}}
+        {% block content %}
+        <table class="center">
+            <tr><th>Price Date</th><th>{{datatype}} of {{dataset1}}</th><th>{{datatype}} of {{dataset2}}</th></tr>
+               {% for data in returndata %}
+                  <tr><td>{{data[0]}}</td><td>{{data[1]}}</td><td>{{data[2]}}</td></tr>
+               {% endfor %}
+        </table>
+        {% endblock %}
+      </div>
+  </body>
+</html>

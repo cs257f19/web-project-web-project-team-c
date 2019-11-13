@@ -246,6 +246,7 @@ h3, h4 {
 }
 
 #sec {
+  height: 50px;
   border: none;
   float: left;
 }

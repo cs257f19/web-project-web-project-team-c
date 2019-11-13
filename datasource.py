@@ -64,7 +64,7 @@ class DataSource:
     def formatData(self, data):
         '''
         data: a list of two lists containing the data retrieved from a query (getData) call
-        Returns data formatted for flask (a list of two dictionaries with date : price key-value pairing).
+        Returns data formatted for flask (a list of tuples containing (pricedate, price1, price2)).
         '''
 
         if data == [] or data == [[], []] or data == None:
@@ -73,35 +73,40 @@ class DataSource:
         tempdataset1 = data[0]
         tempdataset2 = data[1]
 
-        returndata = [{}, {}]
+        tempdata = [{}, {}]
 
         # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
 
         for item in tempdataset1:
-            returndata[0][self.strToInt(item[0])] = item[1]
+            tempdata[0][self.strToInt(item[0])] = item[1]
             
         for item in tempdataset2:
-            returndata[1][self.strToInt(item[0])] = item[1]
+            tempdata[1][self.strToInt(item[0])] = item[1]
         
         # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
 
-        for key in returndata[0].keys():
-            if item not in returndata[1].keys():
+        for key in tempdata[0].keys():
+            if item not in tempdata[1].keys():
                 returndata[1][item] = "No Data"
         
-        for key in returndata[1].keys():
-            if item not in returndata[0].keys():
+        for key in tempdata[1].keys():
+            if item not in tempdata[0].keys():
                 returndata[0][item] = "No Data"
 
         # Iterate over all items in each dictionary and change null values to "No Data"
 
-        for (key, value) in returndata[0].items():
+        for (key, value) in tempdata[0].items():
             if value == "null":
                 returndata[0][key] = "No Data"
 
-        for (key, value) in returndata[1].items():
+        for (key, value) in tempdata[1].items():
             if value == "null":
                 returndata[1][key] = "No Data"
+
+        returndata = []
+
+        for key in tempdata[0].keys():
+            returndata.append((key, tempdata[0][key], tempdata[1][key]))
 
         return returndata
 

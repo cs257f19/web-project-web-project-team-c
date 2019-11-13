@@ -25,7 +25,7 @@ def result():
             return render_template('index.html', returnhtml="it failed")
 
         returnhtml = "<h2>DATA</h2>  + \
-                     <p>" + returndata[0][0] + "</p>"
+                     <p>" + str(returndata) + "</p>"
 
         return render_template('index.html', returnhtml=returnhtml)
     else:

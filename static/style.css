@@ -35,10 +35,28 @@ h2{
   grid-area: data;
 }
 
-.center {
-  width: 50%;
+table.center {
+  width: 100%;
   margin-left: 25%;
   margin-right: 25%;
+  border-bottom: 1px solid #ddd;
+}
+
+.cetner th {
+  height: 50px;
+}
+.center th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+.center td {
+  height: 50px;
+  vertical-align: bottom;
+}
+
+.center tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 .hero {

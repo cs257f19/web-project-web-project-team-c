@@ -22,7 +22,7 @@ h2{
     'leftData middleLeftData middleRightData rightData'
     'headerProject headerProject headerProject headerProject'
     'leftProject middleProject middleProject rightProject'
-    'query query query query'
+    'blank query query blank'
     'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
     'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
     'faq faq faq faq'
@@ -200,7 +200,7 @@ h3, h4 {
 }
 
 .query p {
-  text-align: center;
+  text-align: left;
 }
 
 .faq {

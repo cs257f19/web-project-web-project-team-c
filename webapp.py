@@ -22,17 +22,15 @@ def result():
         dataset1 = request.form.get('dataset1')
         dataset2 = request.form.get('dataset2')
         returndata = ds.performDataQuery([dataset1, dataset2], datatype, date1, date2)
-        print(returndata)
-        if returndata == [[], []]:
-            returnhtml = "<h2>Query Failed</h2>"
-            returnhtml = flask.Markup(returnhtml)
-            return render_template('index.html', returnhtml=returnhtml)
 
         returnhtml = "<h2>DATA</h2>"
-        returnhtml = flask.Markup(returnhtml)
         returndata = ds.formatData(returndata)
+        if returndata == []:
+            returnhtml = "<h2>Query Failed</h2>"
+        
+        returnhtml = flask.Markup(returnhtml)
         print(returndata)
-
+        print([dataset1, dataset2, datatype])
         return render_template('index.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
     else:
         returnhtml = "<h2>Query Failed</h2>"

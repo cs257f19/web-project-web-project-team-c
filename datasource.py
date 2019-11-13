@@ -78,7 +78,7 @@ class DataSource:
             print("Error while executing query: ", e)
             return []
 
-    def dateTimeToInt(self, dt_time):
+    def strToInt(self, dt_time):
         '''
         Converts dt_time to an int.
         dt_time: Datetime format
@@ -90,6 +90,18 @@ class DataSource:
         dt_time_list = dt_time.split("-")
 
         return 10000*int(dt_time_list[0]) + 100*int(dt_time_list[1]) + int(dt_time_list[2])
+    
+    def dateTimeToInt(self, dt_time):
+        '''
+        Converts dt_time to an int.
+        dt_time: Datetime format
+        
+        Returns: date in integer format YYYYMMDD
+        '''
+        if (type(dt_time) != datetime.date):
+            return 0
+
+        return 10000*dt_time.year + 100*dt_time.month + dt_time.day
 
 #     def performAnalysisQuery(self, regressandDatasets, regressorDatasets, regressand, regressor, regressionType, fromDate, toDate=20191009):
 #         '''

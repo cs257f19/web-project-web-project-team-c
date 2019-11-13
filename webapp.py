@@ -16,15 +16,15 @@ def index():
 def result():
     if request.method == 'POST':
         ds = DataSource('hayesrichn', 'orange227blue')
-        date1 = ds.dateTimeToInt(request.form.get('date1'))
-        date2 = ds.dateTimeToInt(request.form.get('date2'))
+        date1 = ds.strToInt(request.form.get('date1'))
+        date2 = ds.strToInt(request.form.get('date2'))
         dataset1 = request.form.get('dataset1')
         dataset2 = request.form.get('dataset2')
         returndata = ds.performDataQuery([dataset1, dataset2], 'openprice', date1, date2)
         if returndata == []:
             return render_template('index.html', returnhtml="it failed")
 
-        returnhtml = "<h2>DATA</h2>  + \
+        returnhtml = "<h2>DATA</h2> \
                      <p>" + str(returndata) + "</p>"
         returnhtml = flask.Markup(returnhtml)
 

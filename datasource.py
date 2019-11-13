@@ -61,20 +61,24 @@ class DataSource:
 
     def formatData(self, data):
         '''
-        Returns data formatted for flask.
+        data: a list of two lists containing the data retrieved from a query (getData) call
+        Returns data formatted for flask (a list of two dictionaries with date : price key-value pairing).
         '''
 
         if data == [] or data == [[], []] or data == None:
             return []
 
-        dataset1 = data[0]
-        dataset2 = data[1]
+        tempdataset1 = data[0]
+        tempdataset2 = data[1]
 
-        returnData = []
-        for index in range(len(dataset1)):
-            returnData.append((dataset1[index][0], dataset1[index][1], dataset2[index][1]))
+        returndata = [{}, {}]
+        for item in tempdataset1:
+            returndata[0][self.strToInt(item[0])] = item[1]
+            
+        for item in tempdataset2:
+            returndata[1][self.strToInt(item[0])] = item[1]
 
-        return returnData
+        return returndata
 
     def getData(self, setname, dataType, fromDate, toDate=20191009):
         '''
@@ -95,10 +99,25 @@ class DataSource:
             print("Error while executing query: ", e)
             return []
 
+    def intToStr(self, dt_time):
+        '''
+        Converts dt_time int to an str.
+        dt_time: date in int format YYYYMMDD
+
+        Returns: date in string format "YYYY-MM-DD"
+        '''
+        if (type(dt_time) != int):
+            return ""
+
+        dt_time_str = str(dt_time)
+
+        return "{0}-{1}-{2}".format(dt_time_str[0:4], dt_time_str[4:6], dt_time_str[6:8])
+        
+
     def strToInt(self, dt_time):
         '''
-        Converts dt_time to an int.
-        dt_time: Datetime format
+        Converts dt_time string to an int.
+        dt_time: date in string format "YYYY-MM-DD"
 
         Returns: date in integer format YYYYMMDD
         '''
@@ -110,6 +129,7 @@ class DataSource:
 
     def dateTimeToInt(self, dt_time):
         '''
+
         Converts dt_time to an int.
         dt_time: Datetime format
 

@@ -30,7 +30,7 @@ class DataSource:
         Note: exits if a connection cannot be established.
         '''
         try:
-            connection = psycopg2.connect(database=self.user, user=self.user, password=self.password)
+            connection = psycopg2.connect(host="localhost", database=self.user, user=self.user, password=self.password)
         except Exception as e:
             print("Connection error: ", e)
             exit(1)
@@ -38,15 +38,15 @@ class DataSource:
 
     def closeConnection(self):
         self.connection.close()
-        
+
     def performDataQuery(self, datasets, dataType, fromDate, toDate=20191009):
         '''
         Executes all the necessary functions to return a list of lists containing data of a certain type in a given range
         datasets: list of string names of datasets
         dataType: string name of data type
         fromDate and toDate: date in integer format YYYYMMDD
-        
-        Returns: a list of list of lists of data from the specified tables, 
+
+        Returns: a list of list of lists of data from the specified tables,
         		 unless a query fails in which case it returns an empty list and stops the function call
         '''
 
@@ -79,10 +79,10 @@ class DataSource:
         dataType: string name of data type
         fromDate: integer of start date in format YYYYMMDD
         toDate: integer of end date in format YYYYMMDD
-    	
+
     	Returns: a list of lists of data from the specified table
     	'''
-        try: 
+        try:
             cursor = self.connection.cursor()
             query = "SELECT pricedate, {0} FROM {1} WHERE pricedate BETWEEN to_date({2}::text, 'YYYYMMDD') AND to_date({3}::text, 'YYYYMMDD')".format(dataType, setname, fromDate, toDate)
             cursor.execute(query)
@@ -95,7 +95,7 @@ class DataSource:
         '''
         Converts dt_time to an int.
         dt_time: Datetime format
-        
+
         Returns: date in integer format YYYYMMDD
         '''
         if (type(dt_time) != str):
@@ -103,12 +103,12 @@ class DataSource:
         dt_time_list = dt_time.split("-")
 
         return 10000*int(dt_time_list[0]) + 100*int(dt_time_list[1]) + int(dt_time_list[2])
-    
+
     def dateTimeToInt(self, dt_time):
         '''
         Converts dt_time to an int.
         dt_time: Datetime format
-        
+
         Returns: date in integer format YYYYMMDD
         '''
         if (type(dt_time) != datetime.date):
@@ -128,7 +128,7 @@ class DataSource:
 #         regressandData = self.performDataQuery([regressandDatasets], regressand, fromDate, toDate=20191009)
 #         regressorData = self.performDataQuery([regressorDatasets], regressor, fromDate, toDate=20191009)
 #         return doRegressionAnalysis(regressandData, regressorData, regressionType)
-# 
+#
 #     def doRegressionAnalysis(self, regressand, regressor, regressionType):
 #         '''
 #         Returns a list containing a string of whether to buy stock or not and the probability that the stock will increase in price.
@@ -139,14 +139,14 @@ class DataSource:
 #         if regressionType == "linear":
 #         	return self.linearRegression(regressand, regressor)
 #         return -1
-#         
-#             
+#
+#
 #     def linearRegression(self, regressand, regressor):
 #     	'''
 #     	regressand: the target value (most likely the stock price or a boolean of either positive or negative change - stock price change)
 #     	regressor: list of variables that are going to be used to impact target value
 #     	'''
-#     	
+#
 #     	x_value_data = regressor
 #     	y_value_data = regressand
 #     	X_train, X_test, y_train, y_test = train_test_split(x_value_data, y_value_data, test_size=0.33, random_state=42)

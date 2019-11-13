@@ -89,22 +89,22 @@ class DataSource:
 
         for key in tempdata[0].keys():
             if item not in tempdata[1].keys():
-                tempdata[1][item] = "No Data"
+                tempdata[1][key] = "No Data"
         
         for key in tempdata[1].keys():
             if item not in tempdata[0].keys():
-                tempdata[0][item] = "No Data"
+                tempdata[0][key] = "No Data"
 
         print(tempdata)
 
         # Iterate over all items in each dictionary and change null values to "No Data"
 
         for (key, value) in tempdata[0].items():
-            if value == "null":
+            if value == "None":
                 tempdata[0][key] = "No Data"
 
         for (key, value) in tempdata[1].items():
-            if value == "null":
+            if value == "None":
                 tempdata[1][key] = "No Data"
 
         returndata = []

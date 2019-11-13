@@ -63,6 +63,10 @@ class DataSource:
         '''
         Returns data formatted for flask.
         '''
+
+        if data == [] or data == [[], []] or data == None:
+            return []
+
         dataset1 = data[0]
         dataset2 = data[1]
 

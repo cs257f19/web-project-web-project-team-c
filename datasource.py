@@ -67,7 +67,7 @@ class DataSource:
         dataset2 = data[1]
 
         returnData = []
-        for index in len(range(dataset1)):
+        for index in range(len(dataset1)):
             returnData.append((dataset1[index][0], dataset1[index][1], dataset2[index][2]))
 
         return returnData

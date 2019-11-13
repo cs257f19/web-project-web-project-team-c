@@ -59,6 +59,19 @@ class DataSource:
             returnData.append(self.getData(setname, dataType, fromDate, toDate))
         return returnData
 
+    def formatData(self, data):
+        '''
+        Returns data formatted for flask.
+        '''
+        dataset1 = data[0]
+        dataset2 = data[1]
+
+        returnData = []
+        for data in dataset1:
+            returnData.append((dataset1[0], dataset1[1], dataset2[2]))
+
+        return returnData
+
     def getData(self, setname, dataType, fromDate, toDate=20191009):
         '''
     	Returns all data from the specified table in the database of the specified type, and between the specified dates

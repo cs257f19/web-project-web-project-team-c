@@ -26,6 +26,7 @@ def result():
 
         returnhtml = "<h2>DATA</h2>  + \
                      <p>" + str(returndata) + "</p>"
+        returnhtml = flask.Markup(returnhtml)
 
         return render_template('index.html', returnhtml=returnhtml)
     else:

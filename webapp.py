@@ -28,6 +28,7 @@ def result():
         returnhtml = "<h2>DATA</h2>"
         returnhtml = flask.Markup(returnhtml)
         returndata = ds.formatData(returndata)
+        print(returnhtml, returndata, dataset1, dataset2, datatype)
 
         return render_template('index.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
     else:

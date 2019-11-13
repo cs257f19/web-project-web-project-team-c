@@ -223,12 +223,12 @@ h3, h4 {
 }
 
 .query {
-  margin-left: 15%;
   grid-area: query;
   height: 200px;
 }
 
 .query p {
+  margin-left: 15%;
   text-align: left;
 }
 

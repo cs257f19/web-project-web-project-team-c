@@ -78,6 +78,7 @@ class DataSource:
         # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
 
         for item in tempdataset1:
+            print(item[0])
             print(self.strToInt(item[0]))
             tempdata[0][self.strToInt(item[0])] = item[1]
             

@@ -1,3 +1,5 @@
+# This is the most updated version of our backend, accessible by the server in webapp.py
+
 import psycopg2
 import getpass
 import datetime
@@ -72,11 +74,34 @@ class DataSource:
         tempdataset2 = data[1]
 
         returndata = [{}, {}]
+
+        # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
+
         for item in tempdataset1:
             returndata[0][self.strToInt(item[0])] = item[1]
             
         for item in tempdataset2:
             returndata[1][self.strToInt(item[0])] = item[1]
+        
+        # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
+
+        for key in returndata[0].keys():
+            if item not in returndata[1].keys():
+                returndata[1][item] = "No Data"
+        
+        for key in returndata[1].keys():
+            if item not in returndata[0].keys():
+                returndata[0][item] = "No Data"
+
+        # Iterate over all items in each dictionary and change null values to "No Data"
+
+        for (key, value) in returndata[0].items():
+            if value == "null":
+                returndata[0][key] = "No Data"
+
+        for (key, value) in returndata[1].items():
+            if value == "null":
+                returndata[1][key] = "No Data"
 
         return returndata
 

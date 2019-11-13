@@ -96,11 +96,11 @@ class DataSource:
         # Iterate over all items in each dictionary and change null values to "No Data"
 
         for (key, value) in tempdata[0].items():
-            if value == "None":
+            if value == None:
                 tempdata[0][key] = "No Data"
 
         for (key, value) in tempdata[1].items():
-            if value == "None":
+            if value == None:
                 tempdata[1][key] = "No Data"
 
         returndata = []

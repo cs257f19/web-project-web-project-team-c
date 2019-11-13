@@ -88,11 +88,11 @@ class DataSource:
         # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
 
         for key in tempdata[0].keys():
-            if item not in tempdata[1].keys():
+            if key not in tempdata[1].keys():
                 tempdata[1][key] = "No Data"
         
         for key in tempdata[1].keys():
-            if item not in tempdata[0].keys():
+            if key not in tempdata[0].keys():
                 tempdata[0][key] = "No Data"
 
         print(tempdata)

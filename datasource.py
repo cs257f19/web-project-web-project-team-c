@@ -103,6 +103,9 @@ class DataSource:
             if value == None:
                 tempdata[1][key] = "No Data"
 
+        tempdata[0] = sorted(tempdata[0])
+        tempdata[1] = sorted(tempdata[1])
+
         returndata = []
 
         for key in tempdata[0].keys():

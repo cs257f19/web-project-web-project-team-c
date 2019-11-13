@@ -21,6 +21,11 @@ def result():
         datatype = request.form.get('datatype')
         dataset1 = request.form.get('dataset1')
         dataset2 = request.form.get('dataset2')
+        print(date1)
+        print(date2)
+        print(datatype)
+        print(dataset1)
+        print(dataset2)
         returndata = ds.performDataQuery([dataset1, dataset2], datatype, date1, date2)
         if returndata == []:
             return render_template('index.html', returnhtml="")
@@ -28,7 +33,6 @@ def result():
         returnhtml = "<h2>DATA</h2>"
         returnhtml = flask.Markup(returnhtml)
         returndata = ds.formatData(returndata)
-        print(returnhtml, returndata, dataset1, dataset2, datatype)
 
         return render_template('index.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
     else:

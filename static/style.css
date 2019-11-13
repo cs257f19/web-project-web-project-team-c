@@ -48,6 +48,7 @@ table.center {
 .center th, td {
   padding: 15px;
   text-align: left;
+  border-spacing: 0;
 }
 
 .center td {

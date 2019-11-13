@@ -78,12 +78,10 @@ class DataSource:
         # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
 
         for item in tempdataset1:
-            print(item[0])
-            print(self.strToInt(item[0]))
-            tempdata[0][self.strToInt(item[0])] = item[1]
+            tempdata[0][self.dateTimeToStr(item[0])] = item[1]
             
         for item in tempdataset2:
-            tempdata[1][self.strToInt(item[0])] = item[1]
+            tempdata[1][self.dateTimeToStr(item[0])] = item[1]
         
         print(tempdata)
 
@@ -134,6 +132,19 @@ class DataSource:
         except Exception as e:
             print("Error while executing query: ", e)
             return []
+
+    def dateTimeToStr(self, dt_time):
+        '''
+
+        Converts dt_time to a str.
+        dt_time: Datetime format
+
+        Returns: date in string format YYYY-MM-DD
+        '''
+        if type(dt_time) != datetime.date:
+            return ""
+
+        return "{0}-{1}-{2}".format(dt_time.year, dt_time.month, dt_time.day)
 
     def intToStr(self, dt_time):
         '''

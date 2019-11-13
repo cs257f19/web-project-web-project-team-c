@@ -22,7 +22,7 @@ h2{
     'leftData middleLeftData middleRightData rightData'
     'headerProject headerProject headerProject headerProject'
     'leftProject middleProject middleProject rightProject'
-    'query query'
+    'query query query query'
     'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
     'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
     'data data data data'
@@ -42,7 +42,7 @@ table.center {
   border-bottom: 1px solid #ddd;
 }
 
-.cetner th {
+.center th {
   height: 50px;
 }
 .center th, td {
@@ -225,6 +225,7 @@ h3, h4 {
 }
 
 .query {
+  margin-left: 15%;
   grid-area: query;
   height: 200px;
 }

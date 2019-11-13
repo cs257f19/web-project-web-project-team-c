@@ -33,6 +33,7 @@ h2{
 
 .data {
   grid-area: data;
+  text-align: center;
 }
 
 .hero {

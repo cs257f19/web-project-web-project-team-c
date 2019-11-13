@@ -98,7 +98,7 @@
           {% block content %}
           <table>
               <tr><th>Price Date</th><th>{{datatype}} of {{dataset1}}</th><th>{{datatype}} of {{dataset2}}</th></tr>
-                 {% for data in returnData %}
+                 {% for data in returndata %}
                     <tr><td>{{data[0]}}</td><td>{{data[1]}}</td><td>{{data[2]}}</td></tr>
                  {% endfor %}
           </table>

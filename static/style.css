@@ -25,10 +25,14 @@ h2{
     'query query query query'
     'headerAnalysis headerAnalysis headerAnalysis headerAnalysis'
     'leftAnalysis middleLeftAnalysis middleRightAnalysis rightAnalysis'
-    'graph graph graph graph'
+    'data data data data'
     'faq faq faq faq'
     'footer footer footer footer';
   /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.data {
+  grid-area: data;
 }
 
 .hero {
@@ -153,17 +157,6 @@ h2{
   grid-area: rightAnalysis;
 }
 
-.graph{
-  grid-area: graph;
-  background-image: url("images/graph.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  max-height: 100%;
-  max-width: 100%;
-  background-size: contain;
-  height: 500px;
-}
-
 .faq {
   grid-area: faq;
 }
@@ -279,7 +272,7 @@ h3, h4 {
       'middleLeftAnalysis'
       'middleRightAnalysis'
       'rightAnalysis'
-      'graph'
+      'data'
       'faq'
       'footer';
     /* grid-column-gap: 10px; - if you want gap between the columns */

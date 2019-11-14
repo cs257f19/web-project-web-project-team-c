@@ -96,6 +96,15 @@
         <div class="faq">
           <h2>FAQ</h2>
           <a class="anchor" name="faq"></a>
+          <h3>Why do certain results in my query have "No Data" / Why are certain dates in my results omitted?</h3>
+          <p>Stocks do not report prices on Saturdays and Sundays, however, certain datasets report "null" values for these days, whereas others do not. Other datasets, such as bitcoin, report data on every day of the week. To ensure clarity in our query results, we do not omit any of the data from our datasets.</p>
+
+          <h3>Where is this data coming from?</h3>
+          <p>For this project we pulled our data from Yahoo Finance. We cleaned the datasets up, and store them on our web server to be delivered to you.</p>
+
+          <h3>What kind of regression analysis does your query perform?</h3>
+          <p>Our analysis uses the Sci-KitLearn Python Module to perform linear regression analysis using the chosen datatypes as the regressor and regressand. </p>
+          
         </div>
 
         <div class="footer">

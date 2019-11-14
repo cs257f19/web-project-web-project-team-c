@@ -253,6 +253,7 @@ h3, h4 {
 #back {
   border: none;
   float: left;
+  font-size: 16px;
 }
 
 .nav a {

@@ -29,8 +29,7 @@ def result():
             returnhtml = "<h2>Query Failed</h2>"
         
         returnhtml = flask.Markup(returnhtml)
-        print(returndata)
-        print([dataset1, dataset2, datatype])
+
         return render_template('results.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
     else:
         returnhtml = "<h2>Query Failed</h2>"

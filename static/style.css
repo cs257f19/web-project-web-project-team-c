@@ -24,7 +24,7 @@ h2{
     'leftProject middleProject middleProject rightProject'
     'query query query query'
     'data data data data'
-    'faq faq faq faq'
+    'blankfaq faq faq blankfaq'
     'footer footer footer footer';
   /* grid-column-gap: 10px; - if you want gap between the columns */
 }
@@ -178,6 +178,10 @@ table.center {
 
 .rightAnalysis{
   grid-area: rightAnalysis;
+}
+
+.blankfaq {
+  grid-area: blankfaq;
 }
 
 .faq {

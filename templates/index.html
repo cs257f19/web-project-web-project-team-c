@@ -85,13 +85,34 @@
             <option value="lowprice">Low Price</option>
           </select>
             <input type="submit" value="Go" form="queryform"></p>
+        <form action="/analysisresults.html" id="analysisform" method="post">
           <p>Perform regression analysis on <select>
             <option value="IRX">IRX</option>
             <option value="SPY">S&P 500</option>
             <option value="BTC">BTC</option>
             <option value="GLD">GLD</option>
-          </select><button>Go</button></p>
-        </div>
+          </select> <select form="queryform" name="datatype">
+            <option value="openprice">Open Price</option>
+            <option value="closeprice">Closing Price</option>
+            <option value="adjcloseprice">Adjusted Closing Price</option>
+            <option value="volume">Volume</option>
+            <option value="highprice">High Price</option>
+            <option value="lowprice">Low Price</option>
+          </select> using <select>
+            <option value="IRX">IRX</option>
+            <option value="SPY">S&P 500</option>
+            <option value="BTC">BTC</option>
+            <option value="GLD">GLD</option>
+          </select> <select form="queryform" name="datatype">
+            <option value="openprice">Open Price</option>
+            <option value="closeprice">Closing Price</option>
+            <option value="adjcloseprice">Adjusted Closing Price</option>
+            <option value="volume">Volume</option>
+            <option value="highprice">High Price</option>
+            <option value="lowprice">Low Price</option>
+          </select> as an indicator. <button>Go</button></p>
+        </form>
+      </div>
 
         <div class="leftfaq">
 
@@ -112,7 +133,7 @@
         </div>
 
         <div class="rightfaq">
-          
+
         </div>
 
         <div class="footer">

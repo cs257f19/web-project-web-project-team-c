@@ -189,7 +189,6 @@ table.center {
 }
 
 .faq {
-  height: 900px;
   grid-area: faq;
 }
 
@@ -239,10 +238,6 @@ h3, h4 {
 .query p {
   margin-left: 15%;
   text-align: left;
-}
-
-.faq {
-  height: 300px;
 }
 
 #faq {

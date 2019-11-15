@@ -79,16 +79,16 @@ class DataSource:
 
         for item in tempdataset1:
             tempdata[0][self.dateTimeToStr(item[0])] = item[1]
-            
+
         for item in tempdataset2:
             tempdata[1][self.dateTimeToStr(item[0])] = item[1]
-        
+
         # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
 
         for key in tempdata[0].keys():
             if key not in tempdata[1].keys():
                 tempdata[1][key] = "No Data"
-        
+
         for key in tempdata[1].keys():
             if key not in tempdata[0].keys():
                 tempdata[0][key] = "No Data"
@@ -140,6 +140,9 @@ class DataSource:
         if type(dt_time) != datetime.date:
             return ""
 
+        if dt_time.day < 10:
+            return "{0}-{1}-0{2}".format(dt_time.year, dt_time.month, dt_time.day)
+
         return "{0}-{1}-{2}".format(dt_time.year, dt_time.month, dt_time.day)
 
     def intToStr(self, dt_time):
@@ -155,7 +158,7 @@ class DataSource:
         dt_time_str = str(dt_time)
 
         return "{0}-{1}-{2}".format(dt_time_str[0:4], dt_time_str[4:6], dt_time_str[6:8])
-        
+
 
     def strToInt(self, dt_time):
         '''

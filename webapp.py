@@ -21,6 +21,7 @@ def index():
     today = 20191008
         
     returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
+    print("initalReturnData", returnData)
     returndata = ds.formatData(returndata)
     print("Today:", today)
     print("returndata:", returndata)

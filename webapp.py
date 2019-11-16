@@ -11,23 +11,25 @@ app = flask.Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
+    ds = DataSource('hayesrichn', 'orange227blue')
+        
+    today = ds.dateTimeToStr(datetime.datetime.today().date())
+    today = ds.strToInt(today)
+    # If the tables where constantly updated from yahooFiance. Because our tables are
+    # not constantly updated. We will have place holder to have the most recent price
+        
+    today = 20191008
+        
+    returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
+    returndata = ds.formatData(returndata)
+    print("Today:", today)
+    print("returndata:", returndata)
+    listOfreturnHTML = makePriceChangeBetweenTwoDaysHTML(returndata)
     if request.method == 'GET':
-        ds = DataSource('hayesrichn', 'orange227blue')
-        
-        today = ds.dateTimeToStr(datetime.datetime.today().date())
-        today = ds.strToInt(today)
-        # If the tables where constantly updated from yahooFiance. Because our tables are
-        # not constantly updated. We will have place holder to have the most recent price
-        
-        today = 20191008
-        
-        returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
-        returndata = ds.formatData(returndata)
-        print("Today:", today)
-        print("returndata:", returndata)
-        listOfreturnHTML = makePriceChangeBetweenTwoDaysHTML(returndata)
+
         return render_template('index.html', listOfreturnHTML=listOfreturnHTML)
-        
+
+
 def makePriceChangeBetweenTwoDaysHTML(returndata):
     listOfreturnHTML = []
     for datasetIndex in range(1,len(returndata[0])):

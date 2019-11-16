@@ -55,8 +55,8 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
     
 
 def regression(dataset1, dataset2, datatype1, datatype2):
-	firstDate = 19600104
-	today = 20191008
+    firstDate = 19600104
+    today = 20191008
     returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
     returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
     print("returndata1", returndata1)

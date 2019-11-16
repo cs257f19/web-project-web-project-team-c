@@ -32,7 +32,7 @@ def index():
         dataset2 = request.form.get('dataset2')
         datatype1 = request.form.get('datatype1')
         datatype2 = request.form.get('datatype2')
-        regression(dataset1, dataset2, datatype1, datatype2)
+        regression(dataset1, dataset2, datatype1, datatype2, ds)
 
 
 '''
@@ -54,7 +54,7 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
     return listOfreturnHTML
     
 
-def regression(dataset1, dataset2, datatype1, datatype2):
+def regression(dataset1, dataset2, datatype1, datatype2, ds):
     firstDate = 19600104
     today = 20191008
     returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)

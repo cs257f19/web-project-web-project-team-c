@@ -14,7 +14,6 @@ def index():
     if request.method == 'GET':
         ds = DataSource('hayesrichn', 'orange227blue')
         
-        
         today = ds.dateTimeToStr(datetime.datetime.today().date())
         today = ds.strToInt(today)
         # If the tables where constantly updated from yahooFiance. Because our tables are
@@ -23,6 +22,7 @@ def index():
         today = 20191008
         
         returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
+        returndata = ds.formatData(returndata)
         print("Today:", today)
         print("returndata:", returndata)
         return render_template('index.html')

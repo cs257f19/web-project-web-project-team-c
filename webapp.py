@@ -6,6 +6,10 @@ import json
 import sys
 from datasource import DataSource
 import datetime
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from matplotlib import pyplot as plt
+
 
 app = flask.Flask(__name__)
 
@@ -21,7 +25,6 @@ def index():
     today = 20191008
         
     returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
-    print("initalReturnData", returndata)
     returndata = ds.formatData(returndata)
     listOfreturnHTML = makePriceChangeBetweenTwoDaysHTML(returndata)
     if request.method == 'GET':
@@ -57,8 +60,18 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
     returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
     returndata = ds.formatData([returndata1[0], returndata2[0]])
-    print("returndata", returndata)
-
+    
+    xValueList = []
+    yValueList = []
+    for tupleIndex in range(len(returndata)):
+        if returndata[tupleIndex][1] != "No Data" and returndata[tupleIndex][2] != "No Data":
+            yValueList.append(returndata[tupleIndex][1])
+            xValueList.append([returndata[tupleIndex][2]])
+            
+    reg = LinearRegression().fit(xValueList, yValueList)
+    plt.scatter(X, y,color='g')
+    plt.plot(X, model2.predict(X),color='k')
+    plt.show()
 
 @app.route("/results.html", methods=['GET','POST'])
 def result():

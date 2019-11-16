@@ -56,9 +56,10 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     today = 20191008
     returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
     returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
-    print("returndata", [returndata1, returndata2])
-    returndata = ds.formatData([returndata1, returndata2])
+    returndata = [returndata1, returndata2]
     print("returndata", returndata)
+    #returndata = ds.formatData([returndata1, returndata2])
+    #print("returndata", returndata)
 
 
 @app.route("/results.html", methods=['GET','POST'])

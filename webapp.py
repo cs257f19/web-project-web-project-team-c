@@ -29,7 +29,7 @@ def index():
         return render_template('index.html', listOfreturnHTML=listOfreturnHTML)
         
 def makePriceChangeBetweenTwoDaysHTML(returndata):
-	listOfreturnHTML = []
+    listOfreturnHTML = []
     for datasetIndex in range(1,len(returndata[0])):
         if returndata[1][datasetIndex] - returndata[0][datasetIndex] < 0:
             returnhtml = "<h4 style='color:red'>" + returndata[1][datasetIndex] + " ↓</h4>"

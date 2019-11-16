@@ -13,9 +13,17 @@ app = flask.Flask(__name__)
 def index():
     if request.method == 'GET':
         ds = DataSource('hayesrichn', 'orange227blue')
+        
+        
         today = ds.dateTimeToStr(datetime.datetime.today().date())
         today = ds.strToInt(today)
-        returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191007', '20191008')
+        # If the tables where constantly updated from yahooFiance. Because our tables are
+        # not constantly updated. We will have place holder to have the most recent price
+        
+        today = 20191008
+        
+        
+        returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', today-1, today)
         print("Today:", today)
         print("returndata:", returndata)
         return render_template('index.html')

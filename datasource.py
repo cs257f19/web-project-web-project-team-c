@@ -73,7 +73,7 @@ class DataSource:
         tempdataset1 = data[0]
         tempdataset2 = data[1]
 
-        tempdata = [{}, {}]
+        tempdata = [{}, {}, {}, {}]
 
         # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
 

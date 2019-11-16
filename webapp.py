@@ -47,9 +47,6 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
             returnhtml = "<h4 style='color:red'> Current Price: " + str(returndata[1][datasetIndex]) + " ↓</h4>"
         else:
             returnhtml = "<h4 style='color:green'> Current Price: " + str(returndata[1][datasetIndex]) + " ↑</h4>"
-        
-        print("returndata", returndata[1][datasetIndex])
-        print("returnhtml", returnhtml)
         returnhtml = flask.Markup(returnhtml)
         listOfreturnHTML.append(returnhtml)
     return listOfreturnHTML
@@ -61,8 +58,8 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     today = 20191008
     returndata1 = [ds.performDataQuery([dataset1], datatype1, firstDate, today)]
     returndata2 = [ds.performDataQuery([dataset2], datatype2, firstDate, today)]
-    print("returndata", [dataset1, dataset2])
-    returndata = ds.formatData([dataset1, dataset2])
+    print("returndata", [returndata1, returndata2])
+    returndata = ds.formatData([returndata1, returndata2])
     print("returndata", returndata)
 
 

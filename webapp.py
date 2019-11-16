@@ -26,10 +26,19 @@ def index():
     print("returndata:", returndata)
     listOfreturnHTML = makePriceChangeBetweenTwoDaysHTML(returndata)
     if request.method == 'GET':
-
         return render_template('index.html', listOfreturnHTML=listOfreturnHTML)
+    if request.method == 'POST':
+        dataset1 = request.form.get('dataset1')
+        dataset2 = request.form.get('dataset2')
+        datatype1 = request.form.get('datatype1')
+        datatype2 = request.form.get('datatype2')
+        regression(dataset1, dataset2, datatype1, datatype2)
 
 
+'''
+Writes the html code to update the current prices and the color of the current price to
+indicate positive or negative change in price
+'''
 def makePriceChangeBetweenTwoDaysHTML(returndata):
     listOfreturnHTML = []
     for datasetIndex in range(1,len(returndata[0])):
@@ -43,6 +52,15 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
         returnhtml = flask.Markup(returnhtml)
         listOfreturnHTML.append(returnhtml)
     return listOfreturnHTML
+    
+
+def regression(dataset1, dataset2, datatype1, datatype2):
+	firstDate = 19600104
+	today = 20191008
+    returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
+    returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
+    print("returndata1", returndata1)
+    print("returndata2", returndata2)
 
 
 @app.route("/results.html", methods=['GET','POST'])

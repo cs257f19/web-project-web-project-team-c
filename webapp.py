@@ -22,8 +22,7 @@ def index():
         
         today = 20191008
         
-        
-        returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', today-1, today)
+        returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
         print("Today:", today)
         print("returndata:", returndata)
         return render_template('index.html')

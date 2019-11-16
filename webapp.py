@@ -10,6 +10,9 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def index():
+    ds = DataSource('hayesrichn', 'orange227blue')
+    returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191007', '20191008')
+    print(returndata)
     return render_template('index.html')
 
 @app.route("/results.html", methods=['GET','POST'])

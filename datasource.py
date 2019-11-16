@@ -82,23 +82,23 @@ class DataSource:
             
         # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
         for datasetIndex in range(len(tempData)):
-            for key in tempdata[datasetIndex].keys():
+            for key in tempData[datasetIndex].keys():
                 for datasetCounter in range(1, len(tempData) + 1):
-                    if key not in tempdata[(datasetIndex + datasetCounter)%len(tempData)].keys():
-                	    tempdata[(datasetIndex + datasetCounter)%len(tempData)][key] = "No Data"
+                    if key not in tempData[(datasetIndex + datasetCounter)%len(tempData)].keys():
+                	    tempData[(datasetIndex + datasetCounter)%len(tempData)][key] = "No Data"
                 		
         # Iterate over all items in each dictionary and change null values to "No Data"
         for datasetIndex in range(len(tempData)):
-            for (key, value) in tempdata[datasetIndex].items():
+            for (key, value) in tempData[datasetIndex].items():
         	    if value == None:
-        		    tempdata[datasetIndex][key] = "No Data"
+        		    tempData[datasetIndex][key] = "No Data"
         		    
         returndata = []
         
-        for key in sorted(tempdata[0].keys()):
+        for key in sorted(tempData[0].keys()):
             tupleList = [key]
             for datasetIndex in range(len(tempData)):
-        	    tupleList.append(tempdata[datasetIndex][key])
+        	    tupleList.append(tempData[datasetIndex][key])
             tupleToAppend = tuple(tupleList)
             returndata.append(tupleToAppend)
         	

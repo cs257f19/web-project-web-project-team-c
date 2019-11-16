@@ -35,6 +35,9 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
             returnhtml = "<h4 style='color:red'>", returndata[1][datasetIndex], " ↓</h4>"
         else:
             returnhtml = "<h4 style='color:green'>", returndata[1][datasetIndex], " ↑</h4>"
+        
+        print("returndata", returndata[1][datasetIndex])
+        print("returnhtml", returnhtml)
         returnhtml = flask.Markup(returnhtml)
         listOfreturnHTML.append(returnhtml)
     return listOfreturnHTML

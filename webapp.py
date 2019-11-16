@@ -23,8 +23,6 @@ def index():
     returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
     print("initalReturnData", returndata)
     returndata = ds.formatData(returndata)
-    print("Today:", today)
-    print("returndata:", returndata)
     listOfreturnHTML = makePriceChangeBetweenTwoDaysHTML(returndata)
     if request.method == 'GET':
         return render_template('index.html', listOfreturnHTML=listOfreturnHTML)
@@ -56,8 +54,8 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     firstDate = 19600104
     firstDate = 20191007
     today = 20191008
-    returndata1 = [ds.performDataQuery([dataset1], datatype1, firstDate, today)]
-    returndata2 = [ds.performDataQuery([dataset2], datatype2, firstDate, today)]
+    returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
+    returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
     print("returndata", [returndata1, returndata2])
     returndata = ds.formatData([returndata1, returndata2])
     print("returndata", returndata)

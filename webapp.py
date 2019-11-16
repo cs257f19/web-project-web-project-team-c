@@ -32,9 +32,9 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
     listOfreturnHTML = []
     for datasetIndex in range(1,len(returndata[0])):
         if returndata[1][datasetIndex] - returndata[0][datasetIndex] < 0:
-            returnhtml = "<h4 style='color:red'>" + str(returndata[1][datasetIndex]) + " ↓</h4>"
+            returnhtml = "<h4 style='color:red'> Current Price: " + str(returndata[1][datasetIndex]) + " ↓</h4>"
         else:
-            returnhtml = "<h4 style='color:green'>" + str(returndata[1][datasetIndex]) + " ↑</h4>"
+            returnhtml = "<h4 style='color:green'> Current Price: " + str(returndata[1][datasetIndex]) + " ↑</h4>"
         
         print("returndata", returndata[1][datasetIndex])
         print("returnhtml", returnhtml)

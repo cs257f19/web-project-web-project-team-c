@@ -8,7 +8,7 @@ from datasource import DataSource
 
 app = flask.Flask(__name__)
 
-@app.route("/", methods['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         ds = DataSource('hayesrichn', 'orange227blue')

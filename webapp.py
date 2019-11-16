@@ -13,7 +13,7 @@ def index():
     if request.method == 'GET':
         ds = DataSource('hayesrichn', 'orange227blue')
         returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191007', '20191008')
-        print("returndata:" + returndata)
+        print("returndata:", returndata)
         return render_template('index.html')
 
 @app.route("/results.html", methods=['GET','POST'])

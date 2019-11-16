@@ -8,12 +8,13 @@ from datasource import DataSource
 
 app = flask.Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods['GET', 'POST'])
 def index():
-    ds = DataSource('hayesrichn', 'orange227blue')
-    returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191007', '20191008')
-    print(returndata)
-    return render_template('index.html')
+    if request.method == 'GET':
+        ds = DataSource('hayesrichn', 'orange227blue')
+        returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191007', '20191008')
+        print(returndata)
+        return render_template('index.html')
 
 @app.route("/results.html", methods=['GET','POST'])
 def result():

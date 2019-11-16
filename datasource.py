@@ -73,7 +73,7 @@ class DataSource:
         # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
         tempData = []
         for datasetIndex in range(len(data)):
-            tempdataset = data[index]
+            tempdataset = data[datasetIndex]
             tempdataDict = {}
             for item in tempdataset:
                 tempdataDict[self.dateTimeToStr(item[0])] = item[1]

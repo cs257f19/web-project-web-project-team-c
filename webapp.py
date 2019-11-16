@@ -59,8 +59,8 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     firstDate = 19600104
     firstDate = 20191007
     today = 20191008
-    returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
-    returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
+    returndata1 = [ds.performDataQuery([dataset1], datatype1, firstDate, today)]
+    returndata2 = [ds.performDataQuery([dataset2], datatype2, firstDate, today)]
     print("returndata", [dataset1, dataset2])
     returndata = ds.formatData([dataset1, dataset2])
     print("returndata", returndata)

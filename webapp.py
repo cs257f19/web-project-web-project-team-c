@@ -13,7 +13,8 @@ app = flask.Flask(__name__)
 def index():
     if request.method == 'GET':
         ds = DataSource('hayesrichn', 'orange227blue')
-        today = datetime.datetime.today().date()
+        today = ds.dateTimeToStr(datetime.datetime.today().date())
+        today = ds.strToInt(today)
         returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191007', '20191008')
         print("Today:", today)
         print("returndata:", returndata)

@@ -5,6 +5,7 @@ from flask import render_template, request
 import json
 import sys
 from datasource import DataSource
+import datetime
 
 app = flask.Flask(__name__)
 
@@ -12,7 +13,9 @@ app = flask.Flask(__name__)
 def index():
     if request.method == 'GET':
         ds = DataSource('hayesrichn', 'orange227blue')
-        returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191008', '20191007')
+        today = datetime.datetime.today().date()
+        returndata = ds.performDataQuery(['irx', 'btc', 'spy', 'gld'], 'adjcloseprice', '20191007', '20191008')
+        print("Today:", today)
         print("returndata:", returndata)
         return render_template('index.html')
 

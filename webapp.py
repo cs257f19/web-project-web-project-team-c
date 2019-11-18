@@ -16,14 +16,14 @@ app = flask.Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def index():
     ds = DataSource('hayesrichn', 'orange227blue')
-        
+
     today = ds.dateTimeToStr(datetime.datetime.today().date())
     today = ds.strToInt(today)
     # If the tables where constantly updated from yahooFiance. Because our tables are
     # not constantly updated. We will have place holder to have the most recent price
-        
+
     today = 20191008
-        
+
     returndata = ds.performDataQuery(['spy', 'btc', 'gld', 'irx'], 'adjcloseprice', today-1, today)
     returndata = ds.formatData(returndata)
     listOfreturnHTML = makePriceChangeBetweenTwoDaysHTML(returndata)
@@ -51,7 +51,7 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
         returnhtml = flask.Markup(returnhtml)
         listOfreturnHTML.append(returnhtml)
     return listOfreturnHTML
-    
+
 
 def regression(dataset1, dataset2, datatype1, datatype2, ds):
     firstDate = 19600104
@@ -60,17 +60,18 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
     returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
     returndata = ds.formatData([returndata1[0], returndata2[0]])
-    
+
     xValueList = []
     yValueList = []
     for tupleIndex in range(len(returndata)):
         if returndata[tupleIndex][1] != "No Data" and returndata[tupleIndex][2] != "No Data":
             yValueList.append(returndata[tupleIndex][1])
             xValueList.append([returndata[tupleIndex][2]])
-            
+
     reg = LinearRegression().fit(xValueList, yValueList)
     plt.scatter(X, y,color='g')
     plt.plot(X, model2.predict(X),color='k')
+    print("Got here")
     plt.show()
 
 @app.route("/results.html", methods=['GET','POST'])
@@ -88,7 +89,7 @@ def result():
         returndata = ds.formatData(returndata)
         if returndata == []:
             returnhtml = "<h2>Query Failed</h2>"
-        
+
         returnhtml = flask.Markup(returnhtml)
 
         return render_template('results.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
@@ -96,7 +97,7 @@ def result():
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)
         return render_template('results.html', returnhtml=returnhtml)
-        
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print('Usage: {0} host port'.format(sys.argv[0]), file=sys.stderr)

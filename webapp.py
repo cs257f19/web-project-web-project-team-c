@@ -69,8 +69,8 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             xValueList.append([returndata[tupleIndex][2]])
 
     reg = LinearRegression().fit(xValueList, yValueList)
-    plt.scatter(X, y,color='g')
-    plt.plot(X, model2.predict(X),color='k')
+    plt.scatter(xValueList, yValueList,color='g')
+    plt.plot(xValueList, reg.predict(xValueList),color='k')
     print("Got here")
     plt.show()
 

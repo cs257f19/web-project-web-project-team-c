@@ -53,7 +53,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
     returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
     returndata = ds.formatData([returndata1, returndata2])
-
+    
     if returndata == [[], []]:
         return (0, 0, [[], []])
 

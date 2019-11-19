@@ -33,7 +33,7 @@
         {% block content %}
         <table class="center">
             <tr><th>Price Date</th><th>{{datatype1}} of {{dataset1}}</th><th>{{datatype2}} of {{dataset2}}</th></tr>
-                <tr><td>Predicted Value: </td><td style="color: green;">{{predicted_value}}</td><td></td></tr>
+                <tr><td>Predicted Value: </td><td style="color: green;">{{predicted_value}}</td><td>{{predictor_value}}</td></tr>
                {% for data in returndata %}
                   <tr><td>{{data[0]}}</td><td>{{data[1]}}</td><td>{{data[2]}}</td></tr>
                {% endfor %}

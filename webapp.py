@@ -75,7 +75,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     plt.savefig(image, format='png')
     image.seek(0)
 
-    return (base64.b64encode(image.read()), predicted_value[-1], returndata)
+    return (base64.b64encode(image.read()), predicted_value[-1], xValueList[-1], returndata)
 
 @app.route("/results.html", methods=['GET','POST'])
 def result():
@@ -114,7 +114,7 @@ def analysisresults():
         returnhtml = "<h2>ANALYSIS RESULT</h2>"
         returnhtml = flask.Markup(returnhtml)
 
-        return render_template('analysis.html', result=regression_data[0].decode('utf8'), predicted_value=regression_data[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, returndata=reversed(regression_data[2]), returnhtml=returnhtml)
+        return render_template('analysis.html', result=regression_data[0].decode('utf8'), predicted_value=regression_data[1], predictor_value=regression_data[2], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, returndata=reversed(regression_data[3]), returnhtml=returnhtml)
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

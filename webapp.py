@@ -49,11 +49,10 @@ def makePriceChangeBetweenTwoDaysHTML(returndata):
 
 def regression(dataset1, dataset2, datatype1, datatype2, ds):
     firstDate = 19600104
-    firstDate = 20191007
     today = 20191008
     returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
     returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
-    returndata = ds.formatData([returndata1[0], returndata2[0]])
+    returndata = ds.formatData([returndata1, returndata2])
 
     if returndata == [[], []]:
         return (0, 0, [[], []])
@@ -68,12 +67,13 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     reg = LinearRegression().fit(xValueList, yValueList)
     plt.scatter(xValueList, yValueList,color='g')
     plt.figure()
-    plt.plot(xValueList, reg.predict(xValueList),color='k')
+    predicted_value = reg.predict(xValueList)
+    plt.plot(xValueList, predicted_value,color='k')
     image = BytesIO()
     plt.savefig(image, format='png')
     image.seek(0)
     print(returndata)
-    return (base64.b64encode(image.read()), reg.predict(xValueList), returndata)
+    return (base64.b64encode(image.read()), predicted_value, returndata)
 
 @app.route("/results.html", methods=['GET','POST'])
 def result():

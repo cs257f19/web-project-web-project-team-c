@@ -65,10 +65,10 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             xValueList.append([returndata[tupleIndex][2]])
 
     reg = LinearRegression().fit(xValueList, yValueList)
-    plt.scatter(xValueList, yValueList,color='g')
     plt.figure()
+    plt.scatter(xValueList, yValueList,color='g')
     predicted_value = reg.predict(xValueList)
-    plt.plot(xValueList, predicted_value,color='k')
+    plt.plot(xValueList, predicted_value, color='k')
     plt.xlabel(str(dataset2) + " " + str(datatype2))
     plt.ylabel(str(dataset1) + " " + str(datatype1))
     image = BytesIO()

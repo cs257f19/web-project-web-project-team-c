@@ -67,6 +67,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
 
     reg = LinearRegression().fit(xValueList, yValueList)
     plt.scatter(xValueList, yValueList,color='g')
+    plt.figure()
     plt.plot(xValueList, reg.predict(xValueList),color='k')
     image = StringIO()
     plt.savefig(image, format='png')
@@ -107,7 +108,7 @@ def analysisresults():
 
         returndata = regression(dataset1, dataset2, datatype1, datatype2, ds)
         formatted_dataset = ds.formatData(returndata[2])
-        return render_template('analysis.html', result=returndata[0], predicted_value=returndata[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, data=formatted_dataset)
+        return render_template('analysis.html', result=returndata[0].decode('utf8'), predicted_value=returndata[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, data=formatted_dataset)
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

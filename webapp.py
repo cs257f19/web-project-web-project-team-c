@@ -108,11 +108,11 @@ def analysisresults():
         dataset2 = request.form.get('dataset2')
         datatype2 = request.form.get('datatype2')
 
-        regression = regression(dataset1, dataset2, datatype1, datatype2, ds)
+        regression_data = regression(dataset1, dataset2, datatype1, datatype2, ds)
         returnhtml = "<h2>ANALYSIS RESULT</h2>"
         returnhtml = flask.Markup(returnhtml)
 
-        return render_template('analysis.html', result=regression[0].decode('utf8'), predicted_value=regression[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, data=regression[2], returnhtml=returnhtml)
+        return render_template('analysis.html', result=regression_data[0].decode('utf8'), predicted_value=regression_data[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, returndata=regression_data[2], returnhtml=returnhtml)
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

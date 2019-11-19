@@ -8,6 +8,7 @@ from datasource import DataSource
 import datetime
 import numpy as np
 from sklearn import linear_model
+from sklearn.model_selection import GridSearchCV
 from sklearn.kernel_ridge import KernelRidge
 from io import BytesIO
 from matplotlib import pyplot as plt

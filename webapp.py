@@ -67,15 +67,16 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     reg = linear_model.LinearRegression().fit(xValueList, yValueList)
     plt.figure()
     plt.scatter(xValueList, yValueList, s=4, color='g')
-    predicted_value = reg.predict(xValueList)
-    plt.plot(xValueList, predicted_value, color='k')
+    predicted_values = reg.predict(xValueList)
+    plt.plot(xValueList, predicted_values, color='k')
+    predicted_value = reg.predict([xValueList[-1][0] + 10])
     plt.xlabel(str(dataset2) + " " + str(datatype2))
     plt.ylabel(str(dataset1) + " " + str(datatype1))
     image = BytesIO()
     plt.savefig(image, format='png')
     image.seek(0)
 
-    return (base64.b64encode(image.read()), predicted_value[-1], xValueList[-1], returndata)
+    return (base64.b64encode(image.read()), predicted_value[0], xValueList[-1][0] + 10, returndata)
 
 @app.route("/results.html", methods=['GET','POST'])
 def result():

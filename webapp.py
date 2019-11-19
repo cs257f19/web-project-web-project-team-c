@@ -8,7 +8,7 @@ from datasource import DataSource
 import datetime
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from io import StringIO
+from io import BytesIO
 from matplotlib import pyplot as plt
 import base64
 
@@ -69,8 +69,9 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     plt.scatter(xValueList, yValueList,color='g')
     plt.figure()
     plt.plot(xValueList, reg.predict(xValueList),color='k')
-    image = StringIO()
+    image = BytesIO()
     plt.savefig(image, format='png')
+    image.seek(0)
     return (base64.encodestring(image.getValue()), reg.predict(xValueList), returndata)
 
 @app.route("/results.html", methods=['GET','POST'])

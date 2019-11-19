@@ -65,7 +65,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             yValueList.append(returndata[tupleIndex][1])
             xValueList.append([returndata[tupleIndex][2]])
 
-    reg = KernelRidge(alpha=1.0, kernel='rbf').fit(xValueList, yValueList)
+    reg = KernelRidge(alpha=1.0, kernel='rbf', gamma=0.1).fit(xValueList, yValueList)
     plt.figure()
     plt.scatter(xValueList, yValueList,color='g')
     predicted_value = reg.predict(xValueList)

@@ -7,7 +7,7 @@ import sys
 from datasource import DataSource
 import datetime
 import numpy as np
-from sklearn.linear_model import linear_model
+from sklearn import linear_model
 from io import BytesIO
 from matplotlib import pyplot as plt
 import base64

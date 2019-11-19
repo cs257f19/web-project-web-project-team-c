@@ -66,7 +66,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
 
     reg = linear_model.LinearRegression().fit(xValueList, yValueList)
     plt.figure()
-    plt.scatter(xValueList, yValueList,color='g')
+    plt.scatter(xValueList, yValueList, s=4, color='g')
     predicted_value = reg.predict(xValueList)
     plt.plot(xValueList, predicted_value, color='k')
     plt.xlabel(str(dataset2) + " " + str(datatype2))

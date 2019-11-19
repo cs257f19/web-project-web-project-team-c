@@ -2,7 +2,6 @@
 
 import flask
 from flask import render_template, request
-import json
 import sys
 from datasource import DataSource
 import datetime

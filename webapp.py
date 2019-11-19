@@ -7,7 +7,7 @@ import sys
 from datasource import DataSource
 import datetime
 import numpy as np
-from sklearn.linear_model import Lasso
+from sklearn.linear_model import linear_model
 from io import BytesIO
 from matplotlib import pyplot as plt
 import base64
@@ -64,7 +64,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             yValueList.append(returndata[tupleIndex][1])
             xValueList.append([returndata[tupleIndex][2]])
 
-    reg = Lasso().fit(xValueList, yValueList)
+    reg = linear_model.SGDClassifier(max_iter=1000, tol=1e-3).fit(xValueList, yValueList)
     plt.figure()
     plt.scatter(xValueList, yValueList,color='g')
     predicted_value = reg.predict(xValueList)

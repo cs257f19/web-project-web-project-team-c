@@ -8,8 +8,6 @@ from datasource import DataSource
 import datetime
 import numpy as np
 from sklearn import linear_model
-from sklearn.model_selection import GridSearchCV
-from sklearn.kernel_ridge import KernelRidge
 from io import BytesIO
 from matplotlib import pyplot as plt
 import base64
@@ -66,7 +64,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             yValueList.append(returndata[tupleIndex][1])
             xValueList.append([returndata[tupleIndex][2]])
 
-    reg = GridSearchCV(KernelRidge(kernel='rbf', gamma=0.1), cv=5,param_grid={"alpha": [1e0, 0.1, 1e-2, 1e-3],"gamma": np.logspace(-2, 2, 5)}).fit(xValueList, yValueList)
+    reg = linear_model.LinearRegression().fit(xValueList, yValueList)
     plt.figure()
     plt.scatter(xValueList, yValueList,color='g')
     predicted_value = reg.predict(xValueList)

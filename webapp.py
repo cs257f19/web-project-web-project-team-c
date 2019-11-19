@@ -87,6 +87,7 @@ def result():
         returndata = ds.performDataQuery([dataset1, dataset2], datatype, date1, date2)
 
         returnhtml = "<h2>DATA</h2>"
+        returndata = ds.formatData(returndata)
         if returndata == []:
             returnhtml = "<h2>Query Failed</h2>"
 
@@ -108,8 +109,8 @@ def analysisresults():
         datatype2 = request.form.get('datatype2')
 
         returndata = regression(dataset1, dataset2, datatype1, datatype2, ds)
-        formatted_dataset = ds.formatData(returndata[2])
-        return render_template('analysis.html', result=returndata[0].decode('utf8'), predicted_value=returndata[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, data=formatted_dataset)
+   
+        return render_template('analysis.html', result=returndata[0].decode('utf8'), predicted_value=returndata[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, data=returndata[2])
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

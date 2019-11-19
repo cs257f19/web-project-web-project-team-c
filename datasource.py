@@ -104,45 +104,45 @@ class DataSource:
         	
         # return returndata
 
-        tempdataset1 = data[0]
-        tempdataset2 = data[1]
+        # tempdataset1 = data[0]
+        # tempdataset2 = data[1]
 
-        tempdata = [{}, {}]
+        # tempdata = [{}, {}]
 
-        # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
+        # # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
 
-        for item in tempdataset1:
-            tempdata[0][self.dateTimeToStr(item[0])] = item[1]
+        # for item in tempdataset1:
+        #     tempdata[0][self.dateTimeToStr(item[0])] = item[1]
 
-        for item in tempdataset2:
-            tempdata[1][self.dateTimeToStr(item[0])] = item[1]
+        # for item in tempdataset2:
+        #     tempdata[1][self.dateTimeToStr(item[0])] = item[1]
 
-        # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
+        # # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
 
-        for key in tempdata[0].keys():
-            if key not in tempdata[1].keys():
-                tempdata[1][key] = "No Data"
+        # for key in tempdata[0].keys():
+        #     if key not in tempdata[1].keys():
+        #         tempdata[1][key] = "No Data"
 
-        for key in tempdata[1].keys():
-            if key not in tempdata[0].keys():
-                tempdata[0][key] = "No Data"
+        # for key in tempdata[1].keys():
+        #     if key not in tempdata[0].keys():
+        #         tempdata[0][key] = "No Data"
 
-        # Iterate over all items in each dictionary and change null values to "No Data"
+        # # Iterate over all items in each dictionary and change null values to "No Data"
 
-        for (key, value) in tempdata[0].items():
-            if value == None:
-                tempdata[0][key] = "No Data"
+        # for (key, value) in tempdata[0].items():
+        #     if value == None:
+        #         tempdata[0][key] = "No Data"
 
-        for (key, value) in tempdata[1].items():
-            if value == None:
-                tempdata[1][key] = "No Data"
+        # for (key, value) in tempdata[1].items():
+        #     if value == None:
+        #         tempdata[1][key] = "No Data"
 
-        returndata = []
+        # returndata = []
 
-        for key in sorted(tempdata[0].keys()):
-            returndata.append((key, tempdata[0][key], tempdata[1][key]))
+        # for key in sorted(tempdata[0].keys()):
+        #     returndata.append((key, tempdata[0][key], tempdata[1][key]))
 
-        return returndata
+        # return returndata
 
     def getData(self, setname, dataType, fromDate, toDate=20191009):
         '''

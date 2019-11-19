@@ -93,7 +93,7 @@ def result():
 
         returnhtml = flask.Markup(returnhtml)
 
-        return render_template('results.html', returnhtml=returnhtml, returndata=returndata, dataset1=dataset1, dataset2=dataset2, datatype=datatype)
+        return render_template('results.html', returnhtml=returnhtml, returndata=reversed(returndata), dataset1=dataset1, dataset2=dataset2, datatype=datatype)
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)
@@ -112,7 +112,7 @@ def analysisresults():
         returnhtml = "<h2>ANALYSIS RESULT</h2>"
         returnhtml = flask.Markup(returnhtml)
 
-        return render_template('analysis.html', result=regression_data[0].decode('utf8'), predicted_value=regression_data[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, returndata=regression_data[2], returnhtml=returnhtml)
+        return render_template('analysis.html', result=regression_data[0].decode('utf8'), predicted_value=regression_data[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, returndata=reversed(regression_data[2]), returnhtml=returnhtml)
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

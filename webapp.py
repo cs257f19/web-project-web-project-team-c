@@ -72,7 +72,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     image = BytesIO()
     plt.savefig(image, format='png')
     image.seek(0)
-    print(returndata)
+
     return (base64.b64encode(image.read()), predicted_value, returndata)
 
 @app.route("/results.html", methods=['GET','POST'])

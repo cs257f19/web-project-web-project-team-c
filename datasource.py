@@ -1,7 +1,7 @@
 # This is the most updated version of our backend, accessible by the server in webapp.py
 
 import psycopg2
-from psycopg2 import sql
+from psycopg2.extensions import AsIs, quote_ident
 import getpass
 import datetime
 import numpy as np
@@ -157,7 +157,7 @@ class DataSource:
     	'''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT pricedate, %s FROM {0} WHERE pricedate BETWEEN to_date(%s::text, 'YYYYMMDD') AND to_date(%s::text, 'YYYYMMDD')".format(sql.Identifier(setname))
+            query = "SELECT pricedate, %s FROM {0} WHERE pricedate BETWEEN to_date(%s::text, 'YYYYMMDD') AND to_date(%s::text, 'YYYYMMDD')".format(AsIs(quote_ident(setname)))
             cursor.execute(query, (dataType, fromDate, toDate, ))
             return cursor.fetchall()
         except Exception as e:

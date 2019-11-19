@@ -65,7 +65,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             yValueList.append(returndata[tupleIndex][1])
             xValueList.append([returndata[tupleIndex][2]])
 
-    reg = KernelRidge(alpha=1.0, kernel='rbf', gamma=0.1).fit(xValueList, yValueList)
+    reg = GridSearchCV(KernelRidge(kernel='rbf', gamma=0.1), cv=5,param_grid={"alpha": [1e0, 0.1, 1e-2, 1e-3],"gamma": np.logspace(-2, 2, 5)}).fit(xValueList, yValueList)
     plt.figure()
     plt.scatter(xValueList, yValueList,color='g')
     predicted_value = reg.predict(xValueList)

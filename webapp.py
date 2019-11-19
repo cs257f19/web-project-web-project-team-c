@@ -76,7 +76,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     plt.savefig(image, format='png')
     image.seek(0)
 
-    return (base64.b64encode(image.read()), predicted_value[0], xValueList[-1][0] + 10, returndata)
+    return (base64.b64encode(image.read()), int(predicted_value[0]), xValueList[-1][0] + 10, returndata)
 
 @app.route("/results.html", methods=['GET','POST'])
 def result():

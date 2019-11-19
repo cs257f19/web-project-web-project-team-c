@@ -69,6 +69,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     plt.figure()
     predicted_value = reg.predict(xValueList)
     plt.plot(xValueList, predicted_value,color='k')
+    plt.plot(xValueList, yValueList,color='k')
     image = BytesIO()
     plt.savefig(image, format='png')
     image.seek(0)

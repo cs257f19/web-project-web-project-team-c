@@ -64,7 +64,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             yValueList.append(returndata[tupleIndex][1])
             xValueList.append([returndata[tupleIndex][2]])
 
-    reg = LinearRegression().fit(xValueList, yValueList)
+    reg = LogisticRegression(random_state=0, solver='lbfgs',multi_class='multinomial').fit(xValueList, yValueList)
     plt.figure()
     plt.scatter(xValueList, yValueList,color='g')
     predicted_value = reg.predict(xValueList)

@@ -109,8 +109,10 @@ def analysisresults():
         datatype2 = request.form.get('datatype2')
 
         returndata = regression(dataset1, dataset2, datatype1, datatype2, ds)
-   
-        return render_template('analysis.html', result=returndata[0].decode('utf8'), predicted_value=returndata[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, data=returndata[2])
+        returnhtml = "<h2>ANALYSIS RESULT</h2>"
+        returnhtml = flask.Markup(returnhtml)
+
+        return render_template('analysis.html', result=returndata[0].decode('utf8'), predicted_value=returndata[1], datatype1=datatype1, dataset1=dataset1, datatype2=datatype2, dataset2=dataset2, data=returndata[2], returnhtml=returnhtml)
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

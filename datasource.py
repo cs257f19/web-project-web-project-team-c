@@ -67,42 +67,42 @@ class DataSource:
         Returns data formatted for flask (a list of tuples containing (pricedate, price1, price2)).
         '''
 
-        # if data == [] or data == [[], []] or data == None:
-        #     return []
+        if data == [] or data == [[], []] or data == None:
+            return []
             
-        # # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
-        # tempData = []
-        # for datasetIndex in range(len(data)):
-        #     tempdataset = data[datasetIndex]
-        #     tempdataDict = {}
-        #     for item in tempdataset:
-        #         tempdataDict[self.dateTimeToStr(item[0])] = item[1]
-        #     tempData.append(tempdataDict)
+        # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
+        tempData = []
+        for datasetIndex in range(len(data)):
+            tempdataset = data[datasetIndex]
+            tempdataDict = {}
+            for item in tempdataset:
+                tempdataDict[self.dateTimeToStr(item[0])] = item[1]
+            tempData.append(tempdataDict)
             
             
-        # # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
-        # for datasetIndex in range(len(tempData)):
-        #     for key in tempData[datasetIndex].keys():
-        #         for datasetCounter in range(1, len(tempData) + 1):
-        #             if key not in tempData[(datasetIndex + datasetCounter)%len(tempData)].keys():
-        #         	    tempData[(datasetIndex + datasetCounter)%len(tempData)][key] = "No Data"
+        # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
+        for datasetIndex in range(len(tempData)):
+            for key in tempData[datasetIndex].keys():
+                for datasetCounter in range(1, len(tempData) + 1):
+                    if key not in tempData[(datasetIndex + datasetCounter)%len(tempData)].keys():
+                	    tempData[(datasetIndex + datasetCounter)%len(tempData)][key] = "No Data"
                 		
-        # # Iterate over all items in each dictionary and change null values to "No Data"
-        # for datasetIndex in range(len(tempData)):
-        #     for (key, value) in tempData[datasetIndex].items():
-        # 	    if value == None:
-        # 		    tempData[datasetIndex][key] = "No Data"
+        # Iterate over all items in each dictionary and change null values to "No Data"
+        for datasetIndex in range(len(tempData)):
+            for (key, value) in tempData[datasetIndex].items():
+        	    if value == None:
+        		    tempData[datasetIndex][key] = "No Data"
         		    
-        # returndata = []
+        returndata = []
         
-        # for key in sorted(tempData[0].keys()):
-        #     tupleList = [key]
-        #     for datasetIndex in range(len(tempData)):
-        # 	    tupleList.append(tempData[datasetIndex][key])
-        #     tupleToAppend = tuple(tupleList)
-        #     returndata.append(tupleToAppend)
+        for key in sorted(tempData[0].keys()):
+            tupleList = [key]
+            for datasetIndex in range(len(tempData)):
+        	    tupleList.append(tempData[datasetIndex][key])
+            tupleToAppend = tuple(tupleList)
+            returndata.append(tupleToAppend)
         	
-        # return returndata
+        return returndata
 
         # tempdataset1 = data[0]
         # tempdataset2 = data[1]

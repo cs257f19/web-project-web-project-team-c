@@ -158,9 +158,9 @@ class DataSource:
     	'''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT pricedate, %s FROM {0} WHERE pricedate BETWEEN to_date(%s::text, 'YYYYMMDD') AND to_date(%s::text, 'YYYYMMDD')".format(setname)
-            print(cursor.mogrify(query, (dataType, fromDate, toDate, )))
-            cursor.execute(query, (dataType, fromDate, toDate, ))
+            query = "SELECT pricedate, {0} FROM {1} WHERE pricedate BETWEEN to_date(%s::text, 'YYYYMMDD') AND to_date(%s::text, 'YYYYMMDD')".format(dataType, setname)
+            print(cursor.mogrify(query, (fromDate, toDate, )))
+            cursor.execute(query, (fromDate, toDate, ))
             return cursor.fetchall()
         except Exception as e:
             print("Error while executing query: ", e)

@@ -87,7 +87,6 @@ def result():
         returndata = ds.performDataQuery([dataset1, dataset2], datatype, date1, date2)
 
         returnhtml = "<h2>DATA</h2>"
-        returndata = ds.formatData(returndata)
         if returndata == []:
             returnhtml = "<h2>Query Failed</h2>"
 

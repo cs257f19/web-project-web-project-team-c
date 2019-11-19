@@ -72,7 +72,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     predicted_value = reg.predict([[xValueList[-1][0] + 10]])
     
     r2Text = r2_score(yValueList, predicted_values)
-    plt.text(3, 8, r2Text, style='italic', bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 10})
+    plt.text(50, 50, "r^2: " + r2Text, style='italic')
     plt.xlabel(str(dataset2) + " " + str(datatype2))
     plt.ylabel(str(dataset1) + " " + str(datatype1))
     image = BytesIO()

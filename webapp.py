@@ -7,6 +7,7 @@ from datasource import DataSource
 import datetime
 import numpy as np
 from sklearn import linear_model
+from sklearn.metrics import r2_score
 from io import BytesIO
 from matplotlib import pyplot as plt
 import base64
@@ -69,7 +70,6 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     predicted_values = reg.predict(xValueList)
     plt.plot(xValueList, predicted_values, color='k')
     predicted_value = reg.predict([[xValueList[-1][0] + 10]])
-    
     
     r2Text = r2_score(yValueList, predicted_value)
     plt.text(3, 8, r2Text, style='italic', bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 10})

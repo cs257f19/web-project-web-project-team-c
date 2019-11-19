@@ -64,7 +64,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
             yValueList.append(returndata[tupleIndex][1])
             xValueList.append([returndata[tupleIndex][2]])
 
-    reg = linear_model.SGDClassifier(max_iter=1000, tol=1e-3).fit(xValueList, yValueList)
+    reg = linear_model.SGDRegressor(max_iter=1000, tol=1e-3).fit(xValueList, yValueList)
     plt.figure()
     plt.scatter(xValueList, yValueList,color='g')
     predicted_value = reg.predict(xValueList)

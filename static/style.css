@@ -18,11 +18,11 @@ h2{
   grid-template-areas:
     'nav nav nav nav'
     'hero hero hero hero'
+    'query query query query'
     'headerData headerData headerData headerData'
     'leftData middleLeftData middleRightData rightData'
     'headerProject headerProject headerProject headerProject'
     'leftProject middleProject middleProject rightProject'
-    'query query query query'
     'data data data data'
     'leftfaq faq faq rightfaq'
     'footer footer footer footer';
@@ -289,6 +289,7 @@ h3, h4 {
     grid-template-areas:
       'nav'
       'hero'
+      'query'
       'headerData'
       'leftData'
       'middleLeftData'
@@ -299,7 +300,6 @@ h3, h4 {
       'middleProject'
       'middleProject'
       'rightProject'
-      'query'
       'headerAnalysis'
       'leftAnalysis'
       'middleLeftAnalysis'

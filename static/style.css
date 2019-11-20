@@ -35,6 +35,12 @@ h2{
   height: 500px;
 }
 
+.analysis-data {
+  grid-area: data;
+  overflow: hidden;
+  height: 1000px;
+}
+
 table.center {
   width: 50%;
   margin-left: 25%;

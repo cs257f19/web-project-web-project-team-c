@@ -72,6 +72,10 @@ def result():
         ax2.set_ylabel(str(dataset2) + " " + str(datatype), color=color)  # we already handled the x-label with ax1
         ax2.scatter(datesValueList, dataset2ValueList, color=color)
         ax2.tick_params(axis='y', labelcolor=color)
+
+        xticks= ax1.get_xticks()
+        plt.xticks([xticks[0], xticks[-1]], visible=True, rotation="vertical")
+
         fig.tight_layout()
 
         image = BytesIO()

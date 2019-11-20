@@ -291,6 +291,8 @@ h3, h4 {
   display: inline-block;
   width: 100%;
   border: 1px solid #008CBA;
+  padding: 12px 20px;
+  margin: 8px 0;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -304,11 +306,15 @@ input[type=submit] {
   transition-duration: 0.4s;
   border-style: none;
   border: 2px solid #008CBA;
+  padding: 12px 20px;
+  margin: 8px 0;
+  cursor: pointer;
 }
 
 input[type=submit]:hover {
   background-color: #008CBA;
   color: white;
+  
 }
 
 .leftquery, .rightquery {

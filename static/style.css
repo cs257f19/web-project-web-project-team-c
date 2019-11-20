@@ -405,30 +405,28 @@ input[type=submit]:hover {
   .grid-container {
     display: grid;
     grid-template-areas:
-      'nav'
-      'hero'
-      'query'
-      'leftquery'
-      'rightquery'
-      'headerData'
-      'leftData'
-      'middleLeftData'
-      'middleRightData'
-      'rightData'
-      'headerProject'
-      'leftProject'
-      'middleProject'
-      'middleProject'
-      'rightProject'
-      'headerAnalysis'
-      'leftAnalysis'
-      'middleLeftAnalysis'
-      'middleRightAnalysis'
-      'rightAnalysis'
-      'data'
-      'faq'
-      'footer';
-    grid-template-columns: repeat(1, 1fr);
+      'nav nav'
+      'hero hero'
+      'query query'
+      'leftquery leftquery'
+      'rightquery rightquery'
+      'headerData headerData'
+      'leftData middleLeftData'
+      'middleRightData rightData'
+      'headerProject headerProject'
+      'leftProject leftProject'
+      'middleProject middleProject'
+      'middleProject middleProject'
+      'rightProject rightProject'
+      'headerAnalysis headerAnalysis'
+      'leftAnalysis leftAnalysis'
+      'middleLeftAnalysis middleLeftAnalysis'
+      'middleRightAnalysis middleRightAnalysis'
+      'rightAnalysis rightAnalysis'
+      'data data'
+      'faq faq'
+      'footer footer';
+    grid-template-columns: repeat(2, 1fr);
   }
   .faq {
     margin-left: 10%;

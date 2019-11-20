@@ -310,6 +310,10 @@ h3, h4 {
       'footer';
     /* grid-column-gap: 10px; - if you want gap between the columns */
   }
+  #faq {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
   
   .rightData, .middleRightData, .middleLeftData, .leftData{
     height: 160px;

@@ -275,7 +275,7 @@ h3, h4 {
 
 .leftquery h3, .rightquery h3 {
   padding-top: 20px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .leftquery form, .rightquery form {
@@ -316,6 +316,10 @@ input[type=submit]:hover {
   background-color: #008CBA;
   color: white;
   
+}
+
+.leftquery label, .rightquery label {
+  font-weight: bold;
 }
 
 .leftquery, .rightquery {

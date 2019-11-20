@@ -6,6 +6,13 @@
     <title>Simple Economics</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <script>
+      $('#button').click(function() {
+        $('.center').css('overflow', 'auto');
+        $('.center').css('height', '100%');
+        $(this).hide();
+      })
+    </script>
   </head>
   <body>
     <div class="nav">
@@ -36,13 +43,6 @@
         </table>
         {% endblock %}
         <a id="button" type="button" display="initial">Show All Results</a>
-        <script>
-          $('#button').click(function() {
-            $('.center').css('overflow', 'auto');
-            $('.center').css('height', '100%');
-            $(this).hide();
-          })
-        </script>
       </div>
   </body>
 </html>

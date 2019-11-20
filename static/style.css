@@ -232,7 +232,7 @@ h3, h4 {
 
 .query {
   grid-area: query;
-  height: 450px;
+  height: 500px;
 }
 
 .query p {
@@ -393,7 +393,7 @@ h3, h4 {
 
   .query {
     grid-area: query;
-    height: 550px;
+    height: 650px;
   }
 
   .dropdowninfo {

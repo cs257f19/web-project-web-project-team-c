@@ -310,7 +310,7 @@ h3, h4 {
       'footer';
     /* grid-column-gap: 10px; - if you want gap between the columns */
   }
-  #faq {
+  .faq {
     margin-left: 10%;
     margin-right: 10%;
   }

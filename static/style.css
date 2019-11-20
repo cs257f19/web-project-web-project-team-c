@@ -391,4 +391,14 @@ h3, h4 {
     background-color: lightgray;
   }
 
+  .query {
+    grid-area: query;
+    height: 550px;
+  }
+
+  .dropdowninfo {
+    position: relative;
+    height: 200px;
+  }
+
 }

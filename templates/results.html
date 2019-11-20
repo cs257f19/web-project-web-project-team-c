@@ -34,6 +34,10 @@
 
     <div class="data" id="data">
         {{returnhtml}}
+        {% if image != None %}
+        <img src="data:image/png;base64, {{ image }}" style="margin: 0 auto; display: block; width: 40%;"\>
+        {% endif %}
+        {% block content %}
         {% block content %}
         <table class="center">
             <tr><th>Price Date</th><th>{{datatype}} of {{dataset1}}</th><th>{{datatype}} of {{dataset2}}</th></tr>

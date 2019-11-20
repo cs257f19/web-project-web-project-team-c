@@ -262,7 +262,7 @@ h3, h4 {
 
 .query {
   grid-area: query;
-  height: 50px;
+  height: 100px;
 }
 
 .query p {
@@ -273,16 +273,23 @@ h3, h4 {
   text-align: center;
 }
 
+.leftquery, .rightquery {
+  height: 600px;
+}
+
+.leftquery, .rightquery form {
+  background-color: white;
+  color: #008CBA;
+  border: 2px solid #008CBA;
+  border-radius: 4px;
+}
+
 .leftquery {
   grid-area: leftquery;
 }
 
 .rightquery {
   grid-area: rightquery;
-}
-
-.leftquery, .rightquery {
-  height: 600px;
 }
 
 #faq {
@@ -353,6 +360,8 @@ h3, h4 {
       'nav'
       'hero'
       'query'
+      'leftquery'
+      'rightquery'
       'headerData'
       'leftData'
       'middleLeftData'
@@ -439,7 +448,7 @@ h3, h4 {
 
   .query {
     grid-area: query;
-    height: 650px;
+    height: 100px;
   }
 
   .dropdowninfo {

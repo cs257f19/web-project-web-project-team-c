@@ -325,8 +325,8 @@ input[type=submit]:hover {
 
 .leftquery, .rightquery {
   background-color: white;
-  color: #008CBA;
-  border: 2px solid #008CBA;
+  color: black;
+  border: 2px solid black;
   border-radius: 4px;
   margin-left: 5%;
   margin-right: 5%;

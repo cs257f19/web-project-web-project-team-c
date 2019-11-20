@@ -6,8 +6,6 @@ from psycopg2.extensions import AsIs, quote_ident
 import getpass
 import datetime
 import numpy as np
-# from sklearn.linear_model import LinearRegression
-# from sklearn.model_selection import train_test_split
 
 class DataSource:
     '''
@@ -71,7 +69,7 @@ class DataSource:
 
         if data == [] or data == [[], []] or data == None:
             return []
-            
+
         # Iterate over all items in each dataset and create a dictionary with the date : price pairing.
         tempData = []
         for datasetIndex in range(len(data)):
@@ -80,30 +78,30 @@ class DataSource:
             for item in tempdataset:
                 tempdataDict[self.dateTimeToStr(item[0])] = item[1]
             tempData.append(tempdataDict)
-            
-            
+
+
         # Iterate over all items in each dictionary and add a "No Data" price value if that date does not appear in the other dataset
         for datasetIndex in range(len(tempData)):
             for key in tempData[datasetIndex].keys():
                 for datasetCounter in range(1, len(tempData) + 1):
                     if key not in tempData[(datasetIndex + datasetCounter)%len(tempData)].keys():
                 	    tempData[(datasetIndex + datasetCounter)%len(tempData)][key] = "No Data"
-                		
+
         # Iterate over all items in each dictionary and change null values to "No Data"
         for datasetIndex in range(len(tempData)):
             for (key, value) in tempData[datasetIndex].items():
         	    if value == None:
         		    tempData[datasetIndex][key] = "No Data"
-        		    
+
         returndata = []
-        
+
         for key in sorted(tempData[0].keys()):
             tupleList = [key]
             for datasetIndex in range(len(tempData)):
         	    tupleList.append(tempData[datasetIndex][key])
             tupleToAppend = tuple(tupleList)
             returndata.append(tupleToAppend)
-        	
+
         return returndata
 
 
@@ -119,6 +117,10 @@ class DataSource:
     	'''
         try:
             cursor = self.connection.cursor()
+            '''
+            For query building it is not all done qwithin the excute function because table names and dataType cannot be placed within double quotes
+            in a query otherwise the query will return no results.
+            '''
             query = "SELECT pricedate, {0} FROM {1} WHERE pricedate BETWEEN to_date(%s::text, 'YYYYMMDD') AND to_date(%s::text, 'YYYYMMDD')".format(AsIs(quote_ident(dataType, cursor)), AsIs(quote_ident(setname, cursor)))
             cursor.execute(query, (fromDate, toDate, ))
             return cursor.fetchall()

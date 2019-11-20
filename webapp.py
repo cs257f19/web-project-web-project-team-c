@@ -31,56 +31,6 @@ def index():
 
     return render_template('index.html', listOfreturnHTML=listOfreturnHTML)
 
-def makePriceChangeBetweenTwoDaysHTML(returndata):
-    '''
-    Writes the html code to update the current prices and the color of the current 
-    price to indicate positive or negative change in price
-    '''
-    listOfreturnHTML = []
-    for datasetIndex in range(1,len(returndata[0])):
-        if returndata[1][datasetIndex] - returndata[0][datasetIndex] < 0:
-            returnhtml = "<h4 style='color:red'> Current Price: " + str(returndata[1][datasetIndex]) + " ↓</h4>"
-        else:
-            returnhtml = "<h4 style='color:green'> Current Price: " + str(returndata[1][datasetIndex]) + " ↑</h4>"
-        returnhtml = flask.Markup(returnhtml)
-        listOfreturnHTML.append(returnhtml)
-    return listOfreturnHTML
-
-
-def regression(dataset1, dataset2, datatype1, datatype2, ds):
-    firstDate = 19600104
-    today = 20191008
-    returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
-    returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
-    returndata = ds.formatData([returndata1[0], returndata2[0]])
-    
-    if returndata == [[], []]:
-        return (0, 0, [[], []])
-
-    xValueList = []
-    yValueList = []
-    for tupleIndex in range(len(returndata)):
-        if returndata[tupleIndex][1] != "No Data" and returndata[tupleIndex][2] != "No Data":
-            yValueList.append(returndata[tupleIndex][1])
-            xValueList.append([returndata[tupleIndex][2]])
-
-    reg = linear_model.LinearRegression().fit(xValueList, yValueList)
-    plt.figure()
-    plt.scatter(xValueList, yValueList, s=4, color='g')
-    predicted_values = reg.predict(xValueList)
-    plt.plot(xValueList, predicted_values, color='k')
-    predicted_value = reg.predict([[xValueList[-1][0] + 10]])
-    
-    r2Text = r2_score(yValueList, predicted_values)
-    plt.text(0.75, 0.75, "r^2: " + str(round(r2Text, 4)), style='italic', transform=plt.gca().transAxes, bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 5})
-    plt.xlabel(str(dataset2) + " " + str(datatype2))
-    plt.ylabel(str(dataset1) + " " + str(datatype1))
-    image = BytesIO()
-    plt.savefig(image, format='png')
-    image.seek(0)
-
-    return (base64.b64encode(image.read()), int(predicted_value[0]), xValueList[-1][0] + 10, returndata)
-
 @app.route("/results.html", methods=['GET','POST'])
 def result():
     if request.method == 'POST':
@@ -124,11 +74,64 @@ def analysisresults():
         returnhtml = flask.Markup(returnhtml)
         return render_template('results.html', returnhtml=returnhtml)
 
+def makePriceChangeBetweenTwoDaysHTML(returndata):
+    '''
+    Writes the html code to update the current prices and the color of the current
+    price to indicate positive or negative change in price
+    '''
+    listOfreturnHTML = []
+    for datasetIndex in range(1,len(returndata[0])):
+        if returndata[1][datasetIndex] - returndata[0][datasetIndex] < 0:
+            returnhtml = "<h4 style='color:red'> Current Price: " + str(returndata[1][datasetIndex]) + " ↓</h4>"
+        else:
+            returnhtml = "<h4 style='color:green'> Current Price: " + str(returndata[1][datasetIndex]) + " ↑</h4>"
+        returnhtml = flask.Markup(returnhtml)
+        listOfreturnHTML.append(returnhtml)
+    return listOfreturnHTML
+
+def regression(dataset1, dataset2, datatype1, datatype2, ds):
+    '''
+    Performs linear regression using dataset2 values as X values and dataset1 values as Y/target values.
+    Returns: a tuple of the following format
+     (Base64 encoded graph, predicted value if datatype of dataset 2 goes up 10 points, value of dataset2 going up 10 points, list containing all data used for regression)
+    '''
+    firstDate = 19600104
+    today = 20191008
+    returndata1 = ds.performDataQuery([dataset1], datatype1, firstDate, today)
+    returndata2 = ds.performDataQuery([dataset2], datatype2, firstDate, today)
+    returndata = ds.formatData([returndata1[0], returndata2[0]])
+
+    if returndata == [[], []]:
+        return (0, 0, [[], []])
+
+    xValueList = []
+    yValueList = []
+    for tupleIndex in range(len(returndata)):
+        if returndata[tupleIndex][1] != "No Data" and returndata[tupleIndex][2] != "No Data":
+            yValueList.append(returndata[tupleIndex][1])
+            xValueList.append([returndata[tupleIndex][2]])
+
+    reg = linear_model.LinearRegression().fit(xValueList, yValueList)
+    plt.figure()
+    plt.scatter(xValueList, yValueList, s=4, color='g')
+    predicted_values = reg.predict(xValueList)
+    plt.plot(xValueList, predicted_values, color='k')
+    predicted_value = reg.predict([[xValueList[-1][0] + 10]])
+
+    r2Text = r2_score(yValueList, predicted_values)
+    plt.text(0.75, 0.75, "r^2: " + str(round(r2Text, 4)), style='italic', transform=plt.gca().transAxes, bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 5})
+    plt.xlabel(str(dataset2) + " " + str(datatype2))
+    plt.ylabel(str(dataset1) + " " + str(datatype1))
+    image = BytesIO()
+    plt.savefig(image, format='png')
+    image.seek(0)
+
+    return (base64.b64encode(image.read()), predicted_value[0], xValueList[-1][0] + 10, returndata)
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print('Usage: {0} host port'.format(sys.argv[0]), file=sys.stderr)
         exit()
-
     host = sys.argv[1]
     port = sys.argv[2]
     app.run(host=host, port=port)

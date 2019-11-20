@@ -282,7 +282,7 @@ h3, h4 {
   display: none;
 }
 
-.dropdowninfo p {
+.dropdowninfo-content {
   display: none;
   position: absolute;
   width: 200px;

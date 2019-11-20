@@ -287,9 +287,14 @@ h3, h4 {
   display: inline-block;
 }
 
+.dropdowninfo a {
+  text-align: center;
+}
+
 .dropdowninfo-content {
   display: none;
   position: absolute;
+  background-color: white;
   width: 400px;
   border: 1px solid black;
   padding: 12px 16px;

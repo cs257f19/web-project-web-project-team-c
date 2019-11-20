@@ -270,7 +270,7 @@ h3, h4 {
 }
 
 .leftquery p, .rightquery p {
-  text-align: center;
+  text-align: left;
 }
 
 .leftquery h3, .rightquery h3 {

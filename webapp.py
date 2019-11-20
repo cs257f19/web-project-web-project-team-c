@@ -78,7 +78,7 @@ def result():
         plt.savefig(image, format='png')
         image.seek(0)
 
-        return render_template('results.html', returnhtml=returnhtml, returndata=reversed(returndata), dataset1=dataset1, dataset2=dataset2, datatype=datatype, image=base64.b64encode(image.read()))
+        return render_template('results.html', returnhtml=returnhtml, returndata=reversed(returndata), dataset1=dataset1, dataset2=dataset2, datatype=datatype, image=base64.b64encode(image.read()).decode('utf8'))
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

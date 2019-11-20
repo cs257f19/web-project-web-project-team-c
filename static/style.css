@@ -291,7 +291,7 @@ h3, h4 {
   z-index: 10;
 }
 
-.dropdowninfo a:hover .dropdowninfo-content {
+.dropdowninfo:hover .dropdowninfo-content {
   display: block;
 }
 

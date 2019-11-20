@@ -64,31 +64,30 @@
         <div class="query">
           <a class="anchor" name="query"></a>
           <h2>Query Our Data</h2>
-          <form action="/results.html" id="queryform" method="post">
-          </form>
-          <p>Compare <select form="queryform" name="dataset1">
-            <option value="irx">IRX</option>
-            <option value="spy">S&P 500</option>
-            <option value="btc">BTC</option>
-            <option value="gld">GLD</option>
-          </select> to <select form="queryform" name="dataset2">
-            <option value="irx">IRX</option>
-            <option value="spy">S&P 500</option>
-            <option value="btc">BTC</option>
-            <option value="gld">GLD</option>
-          </select> between <input type="date" form="queryform" name="date1"required> and <input type="date" form="queryform" name="date2" required> with datatype <select form="queryform" name="datatype">
-            <option value="openprice">Open Price</option>
-            <option value="closeprice">Closing Price</option>
-            <option value="adjcloseprice">Adjusted Closing Price</option>
-            <option value="volume">Volume</option>
-            <option value="highprice">High Price</option>
-            <option value="lowprice">Low Price</option>
-          </select> <input type="submit" value="Go" form="queryform">
           <div class="dropdowninfo">
-            <p style="text-decoration: underline; color: blue;">?</p>
-              <div class="dropdowninfo-content">
-                <p>Hitting "Go" queries our datasets for the data you've requested and returns it formatted from newest values to oldest values. This query allows you to easily compare the most recent trends in two different stocks.</p>
-              </div>  
+            <form action="/results.html" id="queryform" method="post">
+            </form>
+            <p>Compare <select form="queryform" name="dataset1">
+              <option value="irx">IRX</option>
+              <option value="spy">S&P 500</option>
+              <option value="btc">BTC</option>
+              <option value="gld">GLD</option>
+            </select> to <select form="queryform" name="dataset2">
+              <option value="irx">IRX</option>
+              <option value="spy">S&P 500</option>
+              <option value="btc">BTC</option>
+              <option value="gld">GLD</option>
+            </select> between <input type="date" form="queryform" name="date1"required> and <input type="date" form="queryform" name="date2" required> with datatype <select form="queryform" name="datatype">
+              <option value="openprice">Open Price</option>
+              <option value="closeprice">Closing Price</option>
+              <option value="adjcloseprice">Adjusted Closing Price</option>
+              <option value="volume">Volume</option>
+              <option value="highprice">High Price</option>
+              <option value="lowprice">Low Price</option>
+            </select> <input type="submit" value="Go" form="queryform">
+            <div class="dropdowninfo-content">
+              <p>Hitting "Go" queries our datasets for the data you've requested and returns it formatted from newest values to oldest values. This query allows you to easily compare the most recent trends in two different stocks.</p>
+            </div>  
           </div>
           </p>
         <div class="dropdowninfo">

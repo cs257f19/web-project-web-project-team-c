@@ -53,6 +53,7 @@ h2{
   color: #008CBA;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
+  border-style: none;
 }
 
 #button:hover {

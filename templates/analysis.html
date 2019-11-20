@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <script>
-        function spoiler() {
-          document.getElementById('data').style.overflow = "auto";
-          document.getElementById('data').style.height = "100%";
-          document.getElementById('button').style.display = "none";
-        }
+      function spoiler() {
+        document.getElementById('data').style.overflow = "auto";
+        document.getElementById('data').style.height = "100%";
+        document.getElementById('button').style.display = "none";
+      }
     </script>
   </head>
   <body>
@@ -47,7 +47,7 @@
         </table>
         {% endblock %}
       </div>
-      <button type="button" onclick="spoiler()" id="button">Show All Results</button>
+      <button type="button" onclick="spoiler()" id="button" style="align-content: center;">Show All Results</button>
       <div class="footer">
         Simple Economics -|- Louis Ye, Nathan Hayes-Rich, John Groos -|- CS257F19
       </div>

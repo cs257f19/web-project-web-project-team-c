@@ -8,9 +8,9 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <script>
       function spoiler() {
-        $('.data').css('overflow', 'auto');
-        $('.data').css('height', '100%');
-        $('#button').css('display', 'none')
+        document.getElementsByClassName('data').css('overflow', 'auto');
+        document.getElementsByClassName('data').css('height', '100%');
+        document.getElementById('button').css('display', 'none')
       }
     </script>
   </head>

@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <script>
-      $('#button').click(function() {
+      function spoiler() {
         $('.data').css('overflow', 'auto');
         $('.data').css('height', '100%');
-        $(this).hide();
-      })
+        $('#button').css('display', 'none')
+      }
     </script>
   </head>
   <body>
@@ -43,6 +43,6 @@
         </table>
         {% endblock %}
       </div>
-      <a id="button" type="button" display="initial">Show All Results</a>
+      <button type="button" onclick="spoiler()">Show All Results</button>
   </body>
 </html>

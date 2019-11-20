@@ -62,14 +62,14 @@ def result():
         fig, ax1 = plt.subplots()
         color = 'tab:red'
         ax1.set_xlabel('Dates')
-        ax1.set_ylabel(str(dataset1) + " " + str(dataType), color=color)
+        ax1.set_ylabel(str(dataset1) + " " + str(datatype), color=color)
         ax1.scatter(datesValueList, dataset1ValueList, color=color)
 
         ax1.tick_params(axis='y', labelcolor=color)
 
         ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
         color = 'tab:blue'
-        ax2.set_ylabel(str(dataset2) + " " + str(dataType), color=color)  # we already handled the x-label with ax1
+        ax2.set_ylabel(str(dataset2) + " " + str(datatype), color=color)  # we already handled the x-label with ax1
         ax2.scatter(datesValueList, dataset2ValueList, color=color)
         ax2.tick_params(axis='y', labelcolor=color)
         fig.tight_layout()

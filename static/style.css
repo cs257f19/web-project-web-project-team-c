@@ -282,21 +282,21 @@ h3, h4 {
 }
 
 .leftquery, .rightquery {
-  height: 300px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  height: 400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .leftquery select, .rightquery select, .leftquery input[type=date], .rightquery input[type=date] {
   display: inline-block;
-  width: 60%;
+  width: 100%;
   border: 1px solid #008CBA;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 input[type=submit] {
-  width: 50%;
+  width: 100%;
   border-radius: 4px;
   background-color: white;
   color: #008CBA;

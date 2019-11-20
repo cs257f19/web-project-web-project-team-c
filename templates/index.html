@@ -66,7 +66,7 @@
           <h2>Query Our Data</h2>
           <form action="/results.html" id="queryform" method="post">
           </form>
-          <p>Compare <select form="queryform" name="dataset1">
+          <div>Compare <select form="queryform" name="dataset1">
             <option value="irx">IRX</option>
             <option value="spy">S&P 500</option>
             <option value="btc">BTC</option>
@@ -83,9 +83,14 @@
             <option value="volume">Volume</option>
             <option value="highprice">High Price</option>
             <option value="lowprice">Low Price</option>
-          </select> <input type="submit" value="Go" form="queryform"><div class="dropdowninfo"><a href="/#query">?</a><p>Hitting "Go" queries our datasets for the data you've requested and returns it formatted from newest values to oldest values. This query allows you to easily compare the most recent trends in two different stocks.</p></div></p>
+          </select> <input type="submit" value="Go" form="queryform">
+          <div class="dropdowninfo">
+            <a href="/#query">?</a>
+            <p>Hitting "Go" queries our datasets for the data you've requested and returns it formatted from newest values to oldest values. This query allows you to easily compare the most recent trends in two different stocks.</p>
+          </div>
+        </div>
         <form action="/analysis.html" id="analysisform" method="post">
-          <p>Perform regression analysis on <select form="analysisform" name="dataset1">
+          <div>Perform regression analysis on <select form="analysisform" name="dataset1">
             <option value="irx">IRX</option>
             <option value="spy">S&P 500</option>
             <option value="btc">BTC</option>
@@ -109,7 +114,12 @@
             <option value="volume">Volume</option>
             <option value="highprice">High Price</option>
             <option value="lowprice">Low Price</option>
-          </select> as an indicator <input type="submit" value="Go" form="analysisform"><div class="dropdowninfo"><a href="/#query">?</a><p>Hitting "Go" performs linear regression analysis on the specified (first) dataset's datatype, and predicts the value of the first dataset's datatype based on an increase in the second dataset's datatype. e.g. performing regression analysis on IRX's open price using the BTC closing price will tell you the expected value of IRX's open price if the BTC closing price increases.</p></div></p>
+          </select> as an indicator <input type="submit" value="Go" form="analysisform">
+          <div class="dropdowninfo">
+            <a href="/#query">?</a>
+            <p>Hitting "Go" performs linear regression analysis on the specified (first) dataset's datatype, and predicts the value of the first dataset's datatype based on an increase in the second dataset's datatype. e.g. performing regression analysis on IRX's open price using the BTC closing price will tell you the expected value of IRX's open price if the BTC closing price increases.</p>
+          </div>
+        </div>
         </form>
       </div>
 

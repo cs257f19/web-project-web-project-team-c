@@ -19,6 +19,7 @@ h2{
     'nav nav nav nav'
     'hero hero hero hero'
     'query query query query'
+    'leftquery leftquery rightquery rightquery'
     'headerData headerData headerData headerData'
     'leftData middleLeftData middleRightData rightData'
     'headerProject headerProject headerProject headerProject'
@@ -261,11 +262,27 @@ h3, h4 {
 
 .query {
   grid-area: query;
-  height: 500px;
+  height: 50px;
 }
 
 .query p {
   text-align: center;
+}
+
+.leftquery, .rightquery p {
+  text-align: center;
+}
+
+.leftquery {
+  grid-area: leftquery;
+}
+
+.rightquery {
+  grid-area: rightquery;
+}
+
+.leftquery, .rightquery {
+  height: 600px;
 }
 
 #faq {

@@ -42,7 +42,10 @@ h2{
 }
 
 #button {
-  padding-bottom: 50px;
+  margin-bottom: 50px;
+  margin-left: 47%;
+  margin-right: 47%;
+  width: 6%;
 }
 
 table.center {

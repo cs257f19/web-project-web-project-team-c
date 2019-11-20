@@ -389,7 +389,7 @@ h3, h4 {
       'data'
       'faq'
       'footer';
-    /* grid-column-gap: 10px; - if you want gap between the columns */
+    grid-template-columns: repeat(1, 1fr);
   }
   .faq {
     margin-left: 10%;

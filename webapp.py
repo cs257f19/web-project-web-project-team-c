@@ -49,7 +49,36 @@ def result():
 
         returnhtml = flask.Markup(returnhtml)
 
-        return render_template('results.html', returnhtml=returnhtml, returndata=reversed(returndata), dataset1=dataset1, dataset2=dataset2, datatype=datatype)
+        dataset1ValueList = []
+        dataset2ValueList = []
+        datesValueList = []
+        for tupleIndex in range(len(returndata)):
+            if returndata[tupleIndex][1] != "No Data" and returndata[tupleIndex][2] != "No Data":
+                dataset1ValueList.append(returndata[tupleIndex][1])
+                dataset2ValueList.append(returndata[tupleIndex][2])
+                datesValueList.append(returndata[tupleIndex][0])
+
+        plt.figure()
+        fig, ax1 = plt.subplots()
+        color = 'tab:red'
+        ax1.set_xlabel('Dates')
+        ax1.set_ylabel(str(dataset1) + " " + str(dataType), color=color)
+        ax1.scatter(datesValueList, dataset1ValueList, color=color)
+
+        ax1.tick_params(axis='y', labelcolor=color)
+
+        ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+        color = 'tab:blue'
+        ax2.set_ylabel(str(dataset2) + " " + str(dataType), color=color)  # we already handled the x-label with ax1
+        ax2.scatter(datesValueList, dataset2ValueList, color=color)
+        ax2.tick_params(axis='y', labelcolor=color)
+        fig.tight_layout()
+
+        image = BytesIO()
+        plt.savefig(image, format='png')
+        image.seek(0)
+
+        return render_template('results.html', returnhtml=returnhtml, returndata=reversed(returndata), dataset1=dataset1, dataset2=dataset2, datatype=datatype, image=base64.b64encode(image.read()))
     else:
         returnhtml = "<h2>Query Failed</h2>"
         returnhtml = flask.Markup(returnhtml)

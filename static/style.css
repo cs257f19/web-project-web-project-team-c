@@ -282,7 +282,7 @@ h3, h4 {
 }
 
 .leftquery, .rightquery {
-  height: 400px;
+  height: 650px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -490,6 +490,14 @@ input[type=submit]:hover {
   .query {
     grid-area: query;
     height: 100px;
+  }
+
+  .leftquery {
+    height: 650px;
+  }
+
+  .rightquery {
+    height: 550px;
   }
 
   .dropdowninfo {

@@ -6,6 +6,13 @@
     <title>Simple Economics</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <script>
+        function spoiler() {
+          document.getElementById('data').style.overflow = "auto";
+          document.getElementById('data').style.height = "100%";
+          document.getElementById('button').style.display = "none";
+        }
+    </script>
   </head>
   <body>
     <div class="nav">
@@ -25,7 +32,7 @@
 
     </div>
 
-    <div class="data">
+    <div class="data" id="#data">
         {{returnhtml}}
         {% if result != None %}
         <img src="data:image/png;base64, {{ result }}" style="margin-left: 25%; margin-right: 25%"\>
@@ -39,6 +46,7 @@
                {% endfor %}
         </table>
         {% endblock %}
+        <button type="button" onclick="spoiler()" id="button">Show All Results</button>
       </div>
   </body>
 </html>

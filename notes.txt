@@ -1,0 +1,7 @@
+Here we've explained certain design choices we made in the process of creating this website.
+
+1. Text coloring in header tags for price changes of data.
+2. Regression analysis in webapp instead of datasource.
+3. Long and multiple levels of abstraction for the regression function.
+    - Might have made sense to make it its own class
+4. 

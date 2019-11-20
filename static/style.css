@@ -284,6 +284,7 @@ h3, h4 {
 
 .dropdowninfo {
   position: relative;
+  height: 100px;
 }
 
 .dropdowninfo-content {

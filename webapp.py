@@ -102,7 +102,7 @@ def regression(dataset1, dataset2, datatype1, datatype2, ds):
     returndata = ds.formatData([returndata1[0], returndata2[0]])
 
     if returndata == [[], []]:
-        return (0, 0, [[], []])
+        return (0, 0, 0, [[], []])
 
     xValueList = []
     yValueList = []

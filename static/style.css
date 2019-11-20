@@ -37,6 +37,8 @@ table.center {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
+  height: 10%;
+  overflow: hidden;
   border-bottom: 1px solid #ddd;
 }
 

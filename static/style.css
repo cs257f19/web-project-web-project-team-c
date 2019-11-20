@@ -282,7 +282,9 @@ h3, h4 {
 }
 
 .leftquery, .rightquery {
-  height: 600px;
+  height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .leftquery, .rightquery {

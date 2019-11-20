@@ -297,6 +297,7 @@ h3, h4 {
   border-radius: 4px;
   box-sizing: border-box;
   color: black;
+  font-family: "Asap", Asap, sans-serif;
 }
 
 input[type=submit] {

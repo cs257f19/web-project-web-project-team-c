@@ -104,7 +104,7 @@ table.center {
 }
 
 .rightData, .middleRightData, .middleLeftData, .leftData{
-  height: 600px;
+  height: auto;
   font-weight: bold;
   font-size: 1rem;
   text-align: center;
